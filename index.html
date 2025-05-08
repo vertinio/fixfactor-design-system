@@ -66,6 +66,7 @@
             color: var(--text-primary);
             line-height: 1.6;
             background-color: var(--background);
+            overflow-x: hidden;
         }
         
         a {
@@ -171,7 +172,7 @@
             color: var(--text-primary);
         }
         
-        .dsb-sidebar-logo img {
+        .dsb-sidebar-logo svg {
             height: 30px;
             margin-right: var(--space-xs);
         }
@@ -1033,10 +1034,12 @@
         @media (max-width: 992px) {
             .dsb-sidebar {
                 transform: translateX(calc(-1 * var(--sidebar-width)));
+                box-shadow: none;
             }
             
             .dsb-sidebar.active {
                 transform: translateX(0);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
             }
             
             .dsb-main {
@@ -1127,73 +1130,78 @@
         <aside class="dsb-sidebar" id="sidebar">
             <div class="dsb-sidebar-header">
                 <a href="#" class="dsb-sidebar-logo">
-                    <span>Fixfactor</span> DSB
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 32" width="150">
+                        <path fill="#00aac4" d="M0 0h32v32H0z"/>
+                        <path d="M7 7h18v3H7zm0 7h18v3H7zm0 7h18v3H7z" fill="#fff"/>
+                        <path d="M42 7h4v18h-4zm7 0h14v4H49zm0 7h12v4H49zm0 7h14v4H49z" fill="#00aac4"/>
+                        <path d="M67 7h4v18h-4zm7 0h4v18h-4zm7 0h4v18h-4zm12 0h4v7.5h9v4h-9V25h-4zm16 0h4v18h-4zm7 0h16v4H116v3h14v4h-14v3h16v4h-16z" fill="#00aac4"/>
+                    </svg>
                 </a>
             </div>
             
             <nav class="dsb-nav">
                 <div class="dsb-nav-category">
-                    <div class="dsb-nav-title">Wprowadzenie</div>
+                    <div class="dsb-nav-title">Introduction</div>
                     <ul class="dsb-nav-list">
                         <li class="dsb-nav-item">
-                            <a href="#overview" class="dsb-nav-link active">Przegląd</a>
+                            <a href="#overview" class="dsb-nav-link active">Overview</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#philosophy" class="dsb-nav-link">Filozofia designu</a>
+                            <a href="#philosophy" class="dsb-nav-link">Design Philosophy</a>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="dsb-nav-category">
-                    <div class="dsb-nav-title">Podstawy</div>
+                    <div class="dsb-nav-title">Foundation</div>
                     <ul class="dsb-nav-list">
                         <li class="dsb-nav-item">
-                            <a href="#colors" class="dsb-nav-link">Kolory</a>
+                            <a href="#colors" class="dsb-nav-link">Colors</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#typography" class="dsb-nav-link">Typografia</a>
+                            <a href="#typography" class="dsb-nav-link">Typography</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#spacing" class="dsb-nav-link">Przestrzeń</a>
+                            <a href="#spacing" class="dsb-nav-link">Spacing</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#shadows" class="dsb-nav-link">Cienie</a>
+                            <a href="#shadows" class="dsb-nav-link">Shadows</a>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="dsb-nav-category">
-                    <div class="dsb-nav-title">Komponenty</div>
+                    <div class="dsb-nav-title">Components</div>
                     <ul class="dsb-nav-list">
                         <li class="dsb-nav-item">
-                            <a href="#buttons" class="dsb-nav-link">Przyciski</a>
-                            <a href="#buttons-primary" class="dsb-nav-sublink">Podstawowe</a>
-                            <a href="#buttons-secondary" class="dsb-nav-sublink">Wtórne</a>
+                            <a href="#buttons" class="dsb-nav-link">Buttons</a>
+                            <a href="#buttons-primary" class="dsb-nav-sublink">Primary</a>
+                            <a href="#buttons-secondary" class="dsb-nav-sublink">Secondary</a>
                             <a href="#buttons-cta" class="dsb-nav-sublink">CTA</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#section-headers" class="dsb-nav-link">Nagłówki sekcji</a>
+                            <a href="#section-headers" class="dsb-nav-link">Section Headers</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#cards" class="dsb-nav-link">Karty</a>
-                            <a href="#cards-category" class="dsb-nav-sublink">Kategorie</a>
+                            <a href="#cards" class="dsb-nav-link">Cards</a>
+                            <a href="#cards-category" class="dsb-nav-sublink">Category</a>
                             <a href="#cards-usp" class="dsb-nav-sublink">USP</a>
-                            <a href="#cards-testimonials" class="dsb-nav-sublink">Testimoniale</a>
+                            <a href="#cards-testimonials" class="dsb-nav-sublink">Testimonials</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#process-steps" class="dsb-nav-link">Kroki procesu</a>
+                            <a href="#process-steps" class="dsb-nav-link">Process Steps</a>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="dsb-nav-category">
-                    <div class="dsb-nav-title">Sekcje</div>
+                    <div class="dsb-nav-title">Sections</div>
                     <ul class="dsb-nav-list">
                         <li class="dsb-nav-item">
                             <a href="#sections-hero" class="dsb-nav-link">Hero</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#sections-categories" class="dsb-nav-link">Kategorie</a>
+                            <a href="#sections-categories" class="dsb-nav-link">Categories</a>
                         </li>
                         <li class="dsb-nav-item">
                             <a href="#sections-cta" class="dsb-nav-link">CTA</a>
@@ -1202,13 +1210,13 @@
                 </div>
                 
                 <div class="dsb-nav-category">
-                    <div class="dsb-nav-title">Wdrażanie</div>
+                    <div class="dsb-nav-title">Implementation</div>
                     <ul class="dsb-nav-list">
                         <li class="dsb-nav-item">
-                            <a href="#implementation" class="dsb-nav-link">Zasady wdrażania</a>
+                            <a href="#implementation" class="dsb-nav-link">Guidelines</a>
                         </li>
                         <li class="dsb-nav-item">
-                            <a href="#code-structure" class="dsb-nav-link">Struktura kodu</a>
+                            <a href="#code-structure" class="dsb-nav-link">Code Structure</a>
                         </li>
                     </ul>
                 </div>
@@ -1234,11 +1242,11 @@
                 <!-- Overview Section -->
                 <section id="overview" class="dsb-section">
                     <h1>Fixfactor Design System Bible</h1>
-                    <p>Witaj w interaktywnej dokumentacji Design System Bible dla marki Fixfactor. Ten dokument stanowi kompletny przewodnik po komponentach UI, zasadach projektowych i wytycznych implementacyjnych.</p>
+                    <p>Welcome to the interactive documentation for the Fixfactor Design System Bible. This document serves as a complete guide to UI components, design principles, and implementation guidelines.</p>
                     
                     <div class="dsb-component mb-l">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Informacje o wersji</h3>
+                            <h3 class="dsb-component-title">Version Information</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -1247,9 +1255,9 @@
                         </div>
                         <div class="dsb-component-preview">
                             <div style="width: 100%;">
-                                <p><strong>Nazwa:</strong> Fixfactor Design System</p>
-                                <p><strong>Wersja:</strong> 1.0 (Maj 2025)</p>
-                                <p><strong>Platforma:</strong> WordPress (Gutenberg) z możliwością migracji do innych technologii</p>
+                                <p><strong>Name:</strong> Fixfactor Design System</p>
+                                <p><strong>Version:</strong> 1.0 (May 2025)</p>
+                                <p><strong>Platform:</strong> WordPress (Gutenberg) with potential for migration to other technologies</p>
                             </div>
                         </div>
                         <div class="dsb-component-code">
@@ -1259,13 +1267,13 @@
                             </div>
                             <div class="dsb-code-panel active" data-panel="html">
                                 <pre><code>&lt;div&gt;
-    &lt;p&gt;&lt;strong&gt;Nazwa:&lt;/strong&gt; Fixfactor Design System&lt;/p&gt;
-    &lt;p&gt;&lt;strong&gt;Wersja:&lt;/strong&gt; 1.0 (Maj 2025)&lt;/p&gt;
-    &lt;p&gt;&lt;strong&gt;Platforma:&lt;/strong&gt; WordPress (Gutenberg) z możliwością migracji do innych technologii&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Name:&lt;/strong&gt; Fixfactor Design System&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Version:&lt;/strong&gt; 1.0 (May 2025)&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Platform:&lt;/strong&gt; WordPress (Gutenberg) with potential for migration to other technologies&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
-                                <pre><code>/* Podstawowe style dla sekcji informacyjnej */
+                                <pre><code>/* Basic styles for the information section */
 div {
     width: 100%;
 }
@@ -1286,628 +1294,61 @@ strong {
                             <div class="fixfactor-step-number-container">
                                 <div class="fixfactor-step-number">1</div>
                             </div>
-                            <h3 class="fixfactor-step-title">Rezerwacja lub wysyłka</h3>
-                            <p class="fixfactor-step-description">Zarezerwuj wizytę w jednej z naszych londyńskich lokalizacji lub wyślij urządzenie do nas.</p>
+                            <h3 class="fixfactor-step-title">Book or Ship</h3>
+                            <p class="fixfactor-step-description">Book an appointment at one of our London locations or ship your device to us.</p>
                         </div>
                         
                         <div class="fixfactor-process-step">
                             <div class="fixfactor-step-number-container">
                                 <div class="fixfactor-step-number">2</div>
                             </div>
-                            <h3 class="fixfactor-step-title">Diagnoza</h3>
-                            <p class="fixfactor-step-description">Nasi eksperci dokładnie zdiagnozują problem i przedstawią jasną wycenę.</p>
+                            <h3 class="fixfactor-step-title">Diagnosis</h3>
+                            <p class="fixfactor-step-description">Our experts will diagnose the issue thoroughly and provide a clear quote.</p>
                         </div>
                         
                         <div class="fixfactor-process-step">
                             <div class="fixfactor-step-number-container">
                                 <div class="fixfactor-step-number">3</div>
                             </div>
-                            <h3 class="fixfactor-step-title">Naprawa</h3>
-                            <p class="fixfactor-step-description">Naprawiamy urządzenie używając wysokiej jakości części i specjalistycznego sprzętu.</p>
+                            <h3 class="fixfactor-step-title">Repair</h3>
+                            <p class="fixfactor-step-description">We repair your device using high-quality parts and specialized equipment.</p>
                         </div>
                         
                         <div class="fixfactor-process-step">
                             <div class="fixfactor-step-number-container">
                                 <div class="fixfactor-step-number">4</div>
                             </div>
-                            <h3 class="fixfactor-step-title">Odbiór i gwarancja</h3>
-                            <p class="fixfactor-step-description">Odbierz naprawione urządzenie lub wyślemy je do Ciebie z 6-miesięczną gwarancją.</p>
+                            <h3 class="fixfactor-step-title">Collection & Warranty</h3>
+                            <p class="fixfactor-step-description">Collect your repaired device or we'll ship it to you with a 6-month warranty.</p>
                         </div>
                     </div>
                 </section>
-                
-                <!-- Sections Examples -->
-                <section id="sections-hero" class="dsb-section">
-                    <h2 class="dsb-section-title">Sekcja Hero</h2>
-                    <p>Sekcja Hero jest kluczowym elementem pierwszego wrażenia, przedstawiającym najważniejsze komunikaty i zachęcającym do działania.</p>
-                    
-                    <div class="dsb-component">
-                        <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Struktura sekcji Hero</h3>
-                            <div class="dsb-component-controls">
-                                <button class="dsb-control-btn" data-action="toggle-code">
-                                    <i class="fas fa-code"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dsb-component-code">
-                            <div class="dsb-code-tabs">
-                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
-                                <button class="dsb-code-tab" data-tab="css">CSS</button>
-                            </div>
-                            <div class="dsb-code-panel active" data-panel="html">
-                                <pre><code>&lt;section class="fixfactor-section fixfactor-hero-section"&gt;
-    &lt;div class="fixfactor-floating-element float-1"&gt;&lt;/div&gt;
-    &lt;div class="fixfactor-floating-element float-2"&gt;&lt;/div&gt;
-    &lt;div class="fixfactor-floating-element float-3"&gt;&lt;/div&gt;
-    
-    &lt;div class="fixfactor-container"&gt;
-        &lt;!-- Mobile Image (pokazywany tylko na małych ekranach) --&gt;
-        &lt;div class="fixfactor-hero-mobile-image"&gt;
-            &lt;img src="hero-mobile.jpg" alt="Fixfactor Hero Image"&gt;
-        &lt;/div&gt;
-        
-        &lt;div class="fixfactor-hero-content fadeInLeft"&gt;
-            &lt;h1&gt;Expert &lt;span class="text-gradient"&gt;Device Repair&lt;/span&gt; for London & Beyond&lt;/h1&gt;
-            &lt;p&gt;From cracked screens to motherboard repairs, we fix all phones, computers, and electronics with high-quality parts and a 6-month warranty.&lt;/p&gt;
-            &lt;a href="#" class="fixfactor-button"&gt;Start Your Repair&lt;/a&gt;
-            &lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Book Appointment&lt;/a&gt;
-        &lt;/div&gt;
-        
-        &lt;div class="fixfactor-hero-image fadeInRight"&gt;
-            &lt;div class="fixfactor-blob-container"&gt;
-                &lt;div class="fixfactor-blob-shape"&gt;&lt;/div&gt;
-                &lt;div class="fixfactor-blob-shape-2"&gt;&lt;/div&gt;
-                &lt;img src="hero.jpg" alt="Fixfactor Hero Image" class="fixfactor-blob-img"&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/section&gt;</code></pre>
-                            </div>
-                            <div class="dsb-code-panel" data-panel="css">
-                                <pre><code>.fixfactor-hero-section {
-    padding: 8rem 0 6rem;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #f8fcfd 0%, #edf7fa 100%);
-    z-index: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-    padding-bottom: 10rem;
-}
-
-.fixfactor-hero-section:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(rgba(0, 170, 196, 0.03) 2px, transparent 2px),
-        radial-gradient(rgba(255, 209, 0, 0.02) 1.5px, transparent 1.5px);
-    background-size: 30px 30px, 20px 20px;
-    background-position: 0 0, 15px 15px;
-    opacity: 0.8;
-    z-index: -1;
-}
-
-.fixfactor-hero-content {
-    max-width: 600px;
-    margin-right: auto;
-    position: relative;
-    z-index: 5;
-}
-
-.fixfactor-hero-section h1 {
-    font-size: 56px;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-    line-height: 1.2;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
-}
-
-.fixfactor-hero-section p {
-    font-size: 18px;
-    color: var(--text-secondary);
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="sections-categories" class="dsb-section">
-                    <h2 class="dsb-section-title">Sekcja kategorii</h2>
-                    <p>Sekcja kategorii przedstawia główne obszary działalności lub usługi, pozwalając użytkownikowi szybko znaleźć interesujące go tematy.</p>
-                    
-                    <div class="dsb-component">
-                        <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Struktura sekcji kategorii</h3>
-                            <div class="dsb-component-controls">
-                                <button class="dsb-control-btn" data-action="toggle-code">
-                                    <i class="fas fa-code"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dsb-component-code">
-                            <div class="dsb-code-tabs">
-                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
-                                <button class="dsb-code-tab" data-tab="css">CSS</button>
-                            </div>
-                            <div class="dsb-code-panel active" data-panel="html">
-                                <pre><code>&lt;section id="repair-categories" class="fixfactor-section fixfactor-categories-section"&gt;
-    &lt;div class="fixfactor-categories-bg"&gt;&lt;/div&gt;
-    &lt;div class="fixfactor-container"&gt;
-        &lt;div class="fixfactor-section-header fadeInUp"&gt;
-            &lt;h2&gt;What Can We Fix For You?&lt;/h2&gt;
-            &lt;p&gt;We repair a wide range of devices with premium-quality parts and expert technicians&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class="fixfactor-categories-grid"&gt;
-            &lt;!-- Phone --&gt;
-            &lt;a href="#" class="fixfactor-category-card"&gt;
-                &lt;div class="fixfactor-category-image-container"&gt;
-                    &lt;img src="phone-icon.png" alt="Phone Repair" class="fixfactor-category-image"&gt;
-                &lt;/div&gt;
-                &lt;h3 class="fixfactor-category-title"&gt;Phone&lt;/h3&gt;
-                &lt;p class="fixfactor-category-description"&gt;Screen replacements, battery issues, charging problems, and water damage repairs for all phone brands&lt;/p&gt;
-            &lt;/a&gt;
-            
-            &lt;!-- More category cards --&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/section&gt;</code></pre>
-                            </div>
-                            <div class="dsb-code-panel" data-panel="css">
-                                <pre><code>.fixfactor-categories-section {
-    padding: 0 0 5rem;
-    background-color: var(--background-alt);
-    position: relative;
-    overflow: hidden;
-    margin-top: -2px;
-    clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 100%);
-    padding-top: 8rem;
-}
-
-.fixfactor-categories-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 80% 20%, rgba(0, 170, 196, 0.08) 0%, transparent 20%),
-        radial-gradient(circle at 20% 80%, rgba(255, 209, 0, 0.08) 0%, transparent 25%),
-        linear-gradient(to right, rgba(0, 170, 196, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 170, 196, 0.03) 1px, transparent 1px);
-    background-size: auto, auto, 25px 25px, 25px 25px;
-    z-index: 1;
-}
-
-.fixfactor-categories-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 1rem;
-    position: relative;
-    z-index: 2;
-}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="sections-cta" class="dsb-section">
-                    <h2 class="dsb-section-title">Sekcja CTA</h2>
-                    <p>Sekcja CTA (Call to Action) to element, który ma za zadanie skłonić użytkownika do konkretnego działania, takiego jak kontakt czy zamówienie usługi.</p>
-                    
-                    <div class="dsb-component">
-                        <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Struktura sekcji CTA</h3>
-                            <div class="dsb-component-controls">
-                                <button class="dsb-control-btn" data-action="toggle-code">
-                                    <i class="fas fa-code"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dsb-component-code">
-                            <div class="dsb-code-tabs">
-                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
-                                <button class="dsb-code-tab" data-tab="css">CSS</button>
-                            </div>
-                            <div class="dsb-code-panel active" data-panel="html">
-                                <pre><code>&lt;section class="fixfactor-section fixfactor-cta-section"&gt;
-    &lt;div class="fixfactor-cta-bg"&gt;&lt;/div&gt;
-    &lt;div class="fixfactor-cta-pattern"&gt;&lt;/div&gt;
-    &lt;div class="fixfactor-cta-dots"&gt;&lt;/div&gt;
-    &lt;div class="fixfactor-container"&gt;
-        &lt;div class="fixfactor-cta-content"&gt;
-            &lt;h2 class="fadeInUp"&gt;Ready to Get Your Device Fixed?&lt;/h2&gt;
-            &lt;p class="fadeInUp"&gt;Whether you need a quick screen replacement or complex data recovery, our expert team is ready to help.&lt;/p&gt;
-            &lt;div class="fixfactor-cta-buttons"&gt;
-                &lt;a href="#" class="fixfactor-cta-button fadeInUp"&gt;Start Your Repair&lt;/a&gt;
-                &lt;a href="#" class="fixfactor-cta-button-alt fadeInUp"&gt;Contact Us&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/section&gt;</code></pre>
-                            </div>
-                            <div class="dsb-code-panel" data-panel="css">
-                                <pre><code>.fixfactor-cta-section {
-    position: relative;
-    z-index: 5;
-    padding: 7rem 3rem;
-    margin: -3rem 5% 0;
-    border-radius: 20px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18), 0 10px 20px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
-    width: auto;
-}
-
-.fixfactor-cta-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #0a4350 0%, #062830 100%);
-    border-radius: 20px;
-    z-index: 1;
-}
-
-.fixfactor-cta-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 15% 25%, rgba(0, 170, 196, 0.15) 0%, transparent 20%),
-        radial-gradient(circle at 85% 75%, rgba(0, 170, 196, 0.12) 0%, transparent 25%),
-        radial-gradient(circle at 75% 25%, rgba(255, 209, 0, 0.08) 0%, transparent 15%),
-        radial-gradient(circle at 35% 65%, rgba(255, 209, 0, 0.05) 0%, transparent 10%);
-    z-index: 2;
-    border-radius: 20px;
-}
-
-.fixfactor-cta-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: white;
-}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Implementation Guidelines -->
-                <section id="implementation" class="dsb-section">
-                    <h2 class="dsb-section-title">Zasady wdrażania</h2>
-                    <p>Poniższe zasady pomagają zachować spójność i jakość implementacji Design System w projektach Fixfactor.</p>
-                    
-                    <h3>1. Zachowanie spójności wizualnej</h3>
-                    <ul>
-                        <li>Używaj tylko zdefiniowanych kolorów, przestrzeni i typografii</li>
-                        <li>Zachowuj odpowiednie proporcje elementów</li>
-                        <li>Stosuj się do reguł interfejsu</li>
-                    </ul>
-                    
-                    <h3>2. Dostępność</h3>
-                    <ul>
-                        <li>Zachowuj odpowiedni kontrast (WCAG AA)</li>
-                        <li>Zapewniaj alternatywne opisy dla elementów wizualnych</li>
-                        <li>Dbaj o prawidłową hierarchię nagłówków</li>
-                    </ul>
-                    
-                    <h3>3. Wydajność</h3>
-                    <ul>
-                        <li>Optymalizuj obrazy</li>
-                        <li>Minimalizuj liczbę animacji na stronach mobilnych</li>
-                        <li>Stosuj lazy loading dla elementów poza widokiem</li>
-                    </ul>
-                    
-                    <h3>4. Wdrażanie w WordPress</h3>
-                    <ul>
-                        <li>Komponenty powinny być kopiowane do bloku HTML w Gutenbergu</li>
-                        <li>JavaScript powinien być umieszczony na końcu bloku HTML</li>
-                        <li>Do ładowania kodu można użyć wp_enqueue_scripts dla lepszej wydajności</li>
-                    </ul>
-                </section>
-                
-                <section id="code-structure" class="dsb-section">
-                    <h2 class="dsb-section-title">Struktura kodu</h2>
-                    <p>Właściwa struktura kodu zapewnia łatwość utrzymania i rozbudowy systemu w przyszłości.</p>
-                    
-                    <h3>Podstawowa struktura CSS</h3>
-                    <div class="dsb-component">
-                        <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Organizacja CSS</h3>
-                            <div class="dsb-component-controls">
-                                <button class="dsb-control-btn" data-action="copy-code">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dsb-component-code" style="display: block;">
-                            <pre><code>/* ====== ZMIENNE ====== */
-:root {
-    /* Kolory */
-    --fixfactor-primary: #00aac4;
-    --fixfactor-primary-dark: #008ca3;
-    /* itd. */
-    
-    /* Przestrzeń */
-    --space-xs: 0.5rem;
-    --space-s: 1rem;
-    /* itd. */
-    
-    /* Inne zmienne */
-    --border-radius: 9px;
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* ====== RESET I PODSTAWY ====== */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    color: var(--text-primary);
-    line-height: 1.6;
-}
-
-/* ====== KOMPONENTY ATOMOWE ====== */
-/* Przyciski */
-.fixfactor-button {
-    /* style przycisku */
-}
-
-/* ====== ZŁOŻONE KOMPONENTY ====== */
-/* Karty */
-.fixfactor-category-card {
-    /* style karty */
-}
-
-/* ====== SEKCJE ====== */
-/* Hero */
-.fixfactor-hero-section {
-    /* style sekcji hero */
-}
-
-/* ====== ANIMACJE ====== */
-@keyframes float {
-    /* definicja animacji */
-}
-
-/* ====== RESPONSYWNOŚĆ ====== */
-@media (max-width: 992px) {
-    /* style dla mniejszych ekranów */
-}</code></pre>
-                        </div>
-                    </div>
-                    
-                    <h3>Podstawowa struktura HTML</h3>
-                    <div class="dsb-component">
-                        <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Organizacja HTML</h3>
-                            <div class="dsb-component-controls">
-                                <button class="dsb-control-btn" data-action="copy-code">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dsb-component-code" style="display: block;">
-                            <pre><code>&lt;!-- wp:html --&gt;
-&lt;!-- Stylesheets --&gt;
-&lt;style&gt;
-    /* Tutaj wklejamy CSS z odpowiednią strukturą */
-&lt;/style&gt;
-
-&lt;!-- Hero Section --&gt;
-&lt;section class="fixfactor-section fixfactor-hero-section"&gt;
-    &lt;!-- Zawartość sekcji --&gt;
-&lt;/section&gt;
-
-&lt;!-- Diagonal Divider --&gt;
-&lt;div class="fixfactor-diagonal-divider diagonal-white-to-light"&gt;&lt;/div&gt;
-
-&lt;!-- Categories Section --&gt;
-&lt;section class="fixfactor-section fixfactor-categories-section"&gt;
-    &lt;!-- Zawartość sekcji --&gt;
-&lt;/section&gt;
-
-&lt;!-- JavaScript --&gt;
-&lt;script&gt;
-    document.addEventListener('DOMContentLoaded', function() {
-        // Inicjalizacja JavaScript
-    });
-&lt;/script&gt;
-&lt;!-- /wp:html --&gt;</code></pre>
-                        </div>
-                    </div>
-                </section>
-                
-                <div class="dsb-footer">
-                    <p>Fixfactor Design System Bible v1.0 &copy; 2025</p>
-                </div>
-            </div>
-        </main>
-    </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Toggle mobile menu
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.getElementById('sidebar');
-            
-            menuToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-            });
-            
-            // Navigation active state
-            const navLinks = document.querySelectorAll('.dsb-nav-link, .dsb-nav-sublink');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // Remove active class from all links
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // If sidebar is open on mobile, close it
-                    if (window.innerWidth <= 992) {
-                        sidebar.classList.remove('active');
-                    }
-                });
-                
-                // Check if link href matches current hash
-                if (link.getAttribute('href') === window.location.hash) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Code toggle
-            const toggleButtons = document.querySelectorAll('[data-action="toggle-code"]');
-            
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const component = this.closest('.dsb-component');
-                    const codeBlock = component.querySelector('.dsb-component-code');
-                    
-                    if (codeBlock.style.display === 'block') {
-                        codeBlock.style.display = 'none';
-                    } else {
-                        codeBlock.style.display = 'block';
-                    }
-                });
-            });
-            
-            // Code tabs
-            const codeTabs = document.querySelectorAll('.dsb-code-tab');
-            
-            codeTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabGroup = this.closest('.dsb-code-tabs');
-                    const panels = this.closest('.dsb-component-code').querySelectorAll('.dsb-code-panel');
-                    const tabTarget = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all tabs and panels
-                    tabGroup.querySelectorAll('.dsb-code-tab').forEach(tab => tab.classList.remove('active'));
-                    panels.forEach(panel => panel.classList.remove('active'));
-                    
-                    // Add active class to clicked tab and corresponding panel
-                    this.classList.add('active');
-                    document.querySelector(`.dsb-code-panel[data-panel="${tabTarget}"]`).classList.add('active');
-                });
-            });
-            
-            // Copy color button
-            const copyColorButtons = document.querySelectorAll('.dsb-copy-code');
-            
-            copyColorButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const colorValue = this.getAttribute('data-copy');
-                    navigator.clipboard.writeText(colorValue).then(() => {
-                        const originalText = this.innerHTML;
-                        this.innerHTML = '<i class="fas fa-check"></i> Skopiowano';
-                        
-                        setTimeout(() => {
-                            this.innerHTML = originalText;
-                        }, 2000);
-                    });
-                });
-            });
-            
-            // Copy code button
-            const copyCodeButtons = document.querySelectorAll('[data-action="copy-code"]');
-            
-            copyCodeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const component = this.closest('.dsb-component');
-                    const codeBlock = component.querySelector('pre code');
-                    
-                    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-                        const originalText = this.innerHTML;
-                        this.innerHTML = '<i class="fas fa-check"></i>';
-                        
-                        setTimeout(() => {
-                            this.innerHTML = originalText;
-                        }, 2000);
-                    });
-                });
-            });
-            
-            // Theme toggle (placeholder for future dark mode)
-            const themeToggle = document.getElementById('theme-toggle');
-            
-            themeToggle.addEventListener('click', function() {
-                // Toggle between sun and moon icons
-                if (this.innerHTML.includes('fa-sun')) {
-                    this.innerHTML = '<i class="fas fa-moon"></i>';
-                    // Here would go the code to switch to dark mode
-                } else {
-                    this.innerHTML = '<i class="fas fa-sun"></i>';
-                    // Here would go the code to switch to light mode
-                }
-            });
-            
-            // Smooth scroll for hash links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerHeight = document.querySelector('.dsb-header').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update URL hash without scrolling
-                        history.pushState(null, null, targetId);
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
                 
                 <!-- Philosophy Section -->
                 <section id="philosophy" class="dsb-section">
-                    <h2 class="dsb-section-title">Filozofia designu</h2>
-                    <p>Fixfactor Design System opiera się na następujących fundamentach, które określają naszą tożsamość wizualną i doświadczenie użytkownika:</p>
+                    <h2 class="dsb-section-title">Design Philosophy</h2>
+                    <p>The Fixfactor Design System is built on the following foundations that define our visual identity and user experience:</p>
                     
                     <ol>
-                        <li><strong>Przejrzystość i funkcjonalność</strong> - każdy element ma jasne przeznaczenie i jest intuicyjny w użyciu</li>
-                        <li><strong>Profesjonalizm i zaufanie</strong> - design odzwierciedla ekspercki charakter firmy i buduje zaufanie</li>
-                        <li><strong>Bauhaus meets Apple</strong> - czystość formy z nowoczesnym szlifem</li>
-                        <li><strong>Elastyczność bez kompromisów</strong> - system działa na wszystkich urządzeniach bez utraty jakości</li>
-                        <li><strong>Ewolucja, nie rewolucja</strong> - system jest dostosowany do rozwoju zgodnie z potrzebami firmy</li>
+                        <li><strong>Clarity and Functionality</strong> - each element has a clear purpose and is intuitive to use</li>
+                        <li><strong>Professionalism and Trust</strong> - design reflects the expert nature of the company and builds confidence</li>
+                        <li><strong>Bauhaus meets Apple</strong> - clean forms with a modern polish</li>
+                        <li><strong>Flexibility without Compromise</strong> - the system works on all devices without sacrificing quality</li>
+                        <li><strong>Evolution, not Revolution</strong> - the system is adapted to grow along with the company's needs</li>
                     </ol>
                 </section>
                 
                 <!-- Colors Section -->
                 <section id="colors" class="dsb-section">
-                    <h2 class="dsb-section-title">Kolory</h2>
-                    <p>Paleta kolorów Fixfactor jest zaprojektowana, aby transmitować profesjonalizm, technologiczną pewność siebie i przyjazne nastawienie.</p>
+                    <h2 class="dsb-section-title">Colors</h2>
+                    <p>The Fixfactor color palette is designed to convey professionalism, technological confidence, and a friendly approach.</p>
                     
-                    <h3>Kolory podstawowe</h3>
+                    <h3>Primary Colors</h3>
                     <div class="dsb-colors">
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #00aac4;">
                                 <button class="dsb-copy-code" data-copy="#00aac4">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -1919,7 +1360,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #008ca3;">
                                 <button class="dsb-copy-code" data-copy="#008ca3">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -1931,7 +1372,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: rgba(0, 170, 196, 0.1);">
                                 <button class="dsb-copy-code" data-copy="rgba(0, 170, 196, 0.1)">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -1943,7 +1384,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #FFD100;">
                                 <button class="dsb-copy-code" data-copy="#FFD100">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -1955,7 +1396,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #E6BC00;">
                                 <button class="dsb-copy-code" data-copy="#E6BC00">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -1967,7 +1408,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: rgba(255, 209, 0, 0.1);">
                                 <button class="dsb-copy-code" data-copy="rgba(255, 209, 0, 0.1)">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -1977,12 +1418,12 @@ body {
                         </div>
                     </div>
                     
-                    <h3>Kolory tekstu</h3>
+                    <h3>Text Colors</h3>
                     <div class="dsb-colors">
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #0a0a0a;">
                                 <button class="dsb-copy-code" data-copy="#0a0a0a">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -1994,7 +1435,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #121212;">
                                 <button class="dsb-copy-code" data-copy="#121212">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -2006,7 +1447,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #7a7a7a;">
                                 <button class="dsb-copy-code" data-copy="#7a7a7a">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -2016,12 +1457,12 @@ body {
                         </div>
                     </div>
                     
-                    <h3>Kolory tła</h3>
+                    <h3>Background Colors</h3>
                     <div class="dsb-colors">
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #ffffff; border: 1px solid rgba(0, 0, 0, 0.05);">
                                 <button class="dsb-copy-code" data-copy="#ffffff">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -2033,7 +1474,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #f7f9fc;">
                                 <button class="dsb-copy-code" data-copy="#f7f9fc">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -2045,7 +1486,7 @@ body {
                         <div class="dsb-color-card">
                             <div class="dsb-color-preview" style="background-color: #0a1014;">
                                 <button class="dsb-copy-code" data-copy="#0a1014">
-                                    <i class="fas fa-copy"></i> Kopiuj
+                                    <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="dsb-color-info">
@@ -2055,10 +1496,10 @@ body {
                         </div>
                     </div>
                     
-                    <h3>Implementacja CSS</h3>
+                    <h3>CSS Implementation</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Zmienne CSS</h3>
+                            <h3 class="dsb-component-title">CSS Variables</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="copy-code">
                                     <i class="fas fa-copy"></i>
@@ -2087,13 +1528,13 @@ body {
                 
                 <!-- Typography Section -->
                 <section id="typography" class="dsb-section">
-                    <h2 class="dsb-section-title">Typografia</h2>
-                    <p>System typograficzny Fixfactor jest zaprojektowany, aby zapewnić czytelność i hierarchię informacji.</p>
+                    <h2 class="dsb-section-title">Typography</h2>
+                    <p>The Fixfactor typography system is designed to ensure readability and information hierarchy.</p>
                     
                     <h3>Font Stack</h3>
                     <div class="dsb-component mb-l">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">System fontów</h3>
+                            <h3 class="dsb-component-title">Font System</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="copy-code">
                                     <i class="fas fa-copy"></i>
@@ -2105,13 +1546,13 @@ body {
                         </div>
                     </div>
                     
-                    <h3>Hierarchia typograficzna</h3>
+                    <h3>Typography Hierarchy</h3>
                     <div class="dsb-typography-sample">
                         <div class="dsb-typography-title">
                             <div class="dsb-typography-name">H1</div>
                             <div class="dsb-typography-info">56px / 800 weight / line-height 1.2</div>
                         </div>
-                        <h1 style="font-size: 56px; font-weight: 800; line-height: 1.2;">Nagłówek pierwszego poziomu</h1>
+                        <h1 style="font-size: 56px; font-weight: 800; line-height: 1.2;">First Level Heading</h1>
                     </div>
                     
                     <div class="dsb-typography-sample">
@@ -2119,7 +1560,7 @@ body {
                             <div class="dsb-typography-name">H2</div>
                             <div class="dsb-typography-info">38px / 800 weight / line-height 1.2</div>
                         </div>
-                        <h2 style="font-size: 38px; font-weight: 800; line-height: 1.2;">Nagłówek drugiego poziomu</h2>
+                        <h2 style="font-size: 38px; font-weight: 800; line-height: 1.2;">Second Level Heading</h2>
                     </div>
                     
                     <div class="dsb-typography-sample">
@@ -2127,7 +1568,7 @@ body {
                             <div class="dsb-typography-name">H3</div>
                             <div class="dsb-typography-info">24px / 700 weight / line-height 1.3</div>
                         </div>
-                        <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3;">Nagłówek trzeciego poziomu</h3>
+                        <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3;">Third Level Heading</h3>
                     </div>
                     
                     <div class="dsb-typography-sample">
@@ -2135,12 +1576,12 @@ body {
                             <div class="dsb-typography-name">H4</div>
                             <div class="dsb-typography-info">20px / 700 weight / line-height 1.3</div>
                         </div>
-                        <h4 style="font-size: 20px; font-weight: 700; line-height: 1.3;">Nagłówek czwartego poziomu</h4>
+                        <h4 style="font-size: 20px; font-weight: 700; line-height: 1.3;">Fourth Level Heading</h4>
                     </div>
                     
                     <div class="dsb-typography-sample">
                         <div class="dsb-typography-title">
-                            <div class="dsb-typography-name">Paragraf</div>
+                            <div class="dsb-typography-name">Paragraph</div>
                             <div class="dsb-typography-info">16px / 400 weight / line-height 1.6</div>
                         </div>
                         <p style="font-size: 16px; font-weight: 400; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc sit amet nunc. Nulla facilisi. Sed euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc.</p>
@@ -2154,7 +1595,7 @@ body {
                         <p style="font-size: 14px; font-weight: 400; line-height: 1.5;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc sit amet nunc.</p>
                     </div>
                     
-                    <h3>Responsywność typografii</h3>
+                    <h3>Responsive Typography</h3>
                     <table style="width: 100%; border-collapse: collapse; margin-bottom: var(--space-l);">
                         <thead>
                             <tr>
@@ -2190,7 +1631,7 @@ body {
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">16px</td>
                             </tr>
                             <tr>
-                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Paragraf</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Paragraph</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">16px</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">16px</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">15px</td>
@@ -2207,10 +1648,10 @@ body {
                 
                 <!-- Spacing Section -->
                 <section id="spacing" class="dsb-section">
-                    <h2 class="dsb-section-title">Przestrzeń</h2>
-                    <p>Fixfactor używa wielokrotności 0.5rem (8px) jako podstawowej jednostki przestrzeni, zapewniając spójność w całym systemie.</p>
+                    <h2 class="dsb-section-title">Spacing</h2>
+                    <p>Fixfactor uses multiples of 0.5rem (8px) as the base unit of spacing, ensuring consistency throughout the system.</p>
                     
-                    <h3>Jednostki przestrzeni</h3>
+                    <h3>Spacing Units</h3>
                     <div class="dsb-ruler">
                         <div class="dsb-ruler-labels">
                             <div class="dsb-ruler-label">XS (8px)</div>
@@ -2233,49 +1674,49 @@ body {
                     <table style="width: 100%; border-collapse: collapse; margin-bottom: var(--space-l);">
                         <thead>
                             <tr>
-                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Nazwa</th>
-                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Wartość</th>
-                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Zastosowanie</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Name</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Value</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Application</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">XS</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">0.5rem (8px)</td>
-                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Najmniejsze odstępy, padding dla małych elementów</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Smallest spacings, padding for small elements</td>
                             </tr>
                             <tr>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">S</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">1rem (16px)</td>
-                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Standardowy padding wewnętrzny, małe marginesy</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Standard internal padding, small margins</td>
                             </tr>
                             <tr>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">M</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">1.5rem (24px)</td>
-                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Odstępy między elementami pokrewnymi</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Spacing between related elements</td>
                             </tr>
                             <tr>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">L</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">2rem (32px)</td>
-                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Odstępy sekcyjne, większe marginesy</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Section spacings, larger margins</td>
                             </tr>
                             <tr>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">XL</td>
                                 <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">3rem (48px)</td>
-                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Duże odstępy między sekcjami</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Large spacings between sections</td>
                             </tr>
                             <tr>
                                 <td style="padding: var(--space-xs);">XXL</td>
                                 <td style="padding: var(--space-xs);">5rem (80px)</td>
-                                <td style="padding: var(--space-xs);">Bardzo duże odstępy (np. padding sekcji)</td>
+                                <td style="padding: var(--space-xs);">Very large spacings (e.g. section padding)</td>
                             </tr>
                         </tbody>
                     </table>
                     
-                    <h3>Implementacja CSS</h3>
+                    <h3>CSS Implementation</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Zmienne przestrzeni</h3>
+                            <h3 class="dsb-component-title">Spacing Variables</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="copy-code">
                                     <i class="fas fa-copy"></i>
@@ -2297,39 +1738,39 @@ body {
                 
                 <!-- Shadows Section -->
                 <section id="shadows" class="dsb-section">
-                    <h2 class="dsb-section-title">Cienie</h2>
-                    <p>System cieni Fixfactor zapewnia głębię i hierarchię elementów, podkreślając trójwymiarowość interfejsu.</p>
+                    <h2 class="dsb-section-title">Shadows</h2>
+                    <p>The Fixfactor shadow system provides depth and hierarchy to elements, emphasizing the three-dimensional nature of the interface.</p>
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-l); margin-bottom: var(--space-l);">
                         <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: var(--card-shadow);">
                             <h4>Card Shadow</h4>
-                            <p style="color: var(--text-light);">Używany dla standardowych kart</p>
+                            <p style="color: var(--text-light);">Used for standard cards</p>
                             <code>0 10px 25px rgba(0, 0, 0, 0.05)</code>
                         </div>
                         
                         <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: var(--card-hover-shadow);">
                             <h4>Card Hover Shadow</h4>
-                            <p style="color: var(--text-light);">Używany dla kart po najechaniu</p>
+                            <p style="color: var(--text-light);">Used for cards on hover</p>
                             <code>0 15px 25px rgba(0, 0, 0, 0.1)</code>
                         </div>
                         
                         <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: 0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);">
                             <h4>Button Shadow</h4>
-                            <p style="color: var(--text-light);">Używany dla przycisków</p>
+                            <p style="color: var(--text-light);">Used for buttons</p>
                             <code>0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05)</code>
                         </div>
                         
                         <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: 0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);">
                             <h4>Button Hover Shadow</h4>
-                            <p style="color: var(--text-light);">Używany dla przycisków po najechaniu</p>
+                            <p style="color: var(--text-light);">Used for buttons on hover</p>
                             <code>0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1)</code>
                         </div>
                     </div>
                     
-                    <h3>Implementacja CSS</h3>
+                    <h3>CSS Implementation</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Zmienne cieni</h3>
+                            <h3 class="dsb-component-title">Shadow Variables</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="copy-code">
                                     <i class="fas fa-copy"></i>
@@ -2350,13 +1791,13 @@ body {
                 
                 <!-- Buttons Section -->
                 <section id="buttons" class="dsb-section">
-                    <h2 class="dsb-section-title">Przyciski</h2>
-                    <p>Przyciski są kluczowymi elementami interakcji, zaprojektowanymi, aby wyróżniać się i zachęcać do działania.</p>
+                    <h2 class="dsb-section-title">Buttons</h2>
+                    <p>Buttons are key interaction elements, designed to stand out and encourage action.</p>
                     
-                    <h3 id="buttons-primary">Przyciski podstawowe</h3>
+                    <h3 id="buttons-primary">Primary Buttons</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Przycisk podstawowy</h3>
+                            <h3 class="dsb-component-title">Primary Button</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2364,7 +1805,7 @@ body {
                             </div>
                         </div>
                         <div class="dsb-component-preview">
-                            <a href="#" class="fixfactor-button">Przycisk podstawowy</a>
+                            <a href="#" class="fixfactor-button">Primary Button</a>
                         </div>
                         <div class="dsb-component-code">
                             <div class="dsb-code-tabs">
@@ -2372,7 +1813,7 @@ body {
                                 <button class="dsb-code-tab" data-tab="css">CSS</button>
                             </div>
                             <div class="dsb-code-panel active" data-panel="html">
-                                <pre><code>&lt;a href="#" class="fixfactor-button"&gt;Przycisk podstawowy&lt;/a&gt;</code></pre>
+                                <pre><code>&lt;a href="#" class="fixfactor-button"&gt;Primary Button&lt;/a&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
                                 <pre><code>.fixfactor-button {
@@ -2405,10 +1846,10 @@ body {
                         </div>
                     </div>
                     
-                    <h3 id="buttons-secondary">Przyciski wtórne</h3>
+                    <h3 id="buttons-secondary">Secondary Buttons</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Przycisk wtórny</h3>
+                            <h3 class="dsb-component-title">Secondary Button</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2416,7 +1857,7 @@ body {
                             </div>
                         </div>
                         <div class="dsb-component-preview">
-                            <a href="#" class="fixfactor-button fixfactor-button-secondary">Przycisk wtórny</a>
+                            <a href="#" class="fixfactor-button fixfactor-button-secondary">Secondary Button</a>
                         </div>
                         <div class="dsb-component-code">
                             <div class="dsb-code-tabs">
@@ -2424,7 +1865,7 @@ body {
                                 <button class="dsb-code-tab" data-tab="css">CSS</button>
                             </div>
                             <div class="dsb-code-panel active" data-panel="html">
-                                <pre><code>&lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Przycisk wtórny&lt;/a&gt;</code></pre>
+                                <pre><code>&lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Secondary Button&lt;/a&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
                                 <pre><code>.fixfactor-button-secondary {
@@ -2442,10 +1883,10 @@ body {
                         </div>
                     </div>
                     
-                    <h3>Przyciski w grupie</h3>
+                    <h3>Button Groups</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Grupa przycisków</h3>
+                            <h3 class="dsb-component-title">Button Group</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2454,8 +1895,8 @@ body {
                         </div>
                         <div class="dsb-component-preview">
                             <div class="dsb-button-group">
-                                <a href="#" class="fixfactor-button">Przycisk podstawowy</a>
-                                <a href="#" class="fixfactor-button fixfactor-button-secondary">Przycisk wtórny</a>
+                                <a href="#" class="fixfactor-button">Primary Button</a>
+                                <a href="#" class="fixfactor-button fixfactor-button-secondary">Secondary Button</a>
                             </div>
                         </div>
                         <div class="dsb-component-code">
@@ -2465,8 +1906,8 @@ body {
                             </div>
                             <div class="dsb-code-panel active" data-panel="html">
                                 <pre><code>&lt;div class="dsb-button-group"&gt;
-    &lt;a href="#" class="fixfactor-button"&gt;Przycisk podstawowy&lt;/a&gt;
-    &lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Przycisk wtórny&lt;/a&gt;
+    &lt;a href="#" class="fixfactor-button"&gt;Primary Button&lt;/a&gt;
+    &lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Secondary Button&lt;/a&gt;
 &lt;/div&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
@@ -2479,10 +1920,10 @@ body {
                         </div>
                     </div>
                     
-                    <h3 id="buttons-cta">Przyciski CTA</h3>
+                    <h3 id="buttons-cta">CTA Buttons</h3>
                     <div class="dsb-component" style="margin-bottom: var(--space-xl);">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Przyciski CTA</h3>
+                            <h3 class="dsb-component-title">CTA Buttons</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2491,8 +1932,8 @@ body {
                         </div>
                         <div class="dsb-component-preview" style="background-color: var(--cta-background); padding: var(--space-xl);">
                             <div class="dsb-button-group">
-                                <a href="#" class="fixfactor-cta-button">Przycisk CTA</a>
-                                <a href="#" class="fixfactor-cta-button-alt">Przycisk alternatywny</a>
+                                <a href="#" class="fixfactor-cta-button">CTA Button</a>
+                                <a href="#" class="fixfactor-cta-button-alt">Alternative Button</a>
                             </div>
                         </div>
                         <div class="dsb-component-code">
@@ -2501,8 +1942,8 @@ body {
                                 <button class="dsb-code-tab" data-tab="css">CSS</button>
                             </div>
                             <div class="dsb-code-panel active" data-panel="html">
-                                <pre><code>&lt;a href="#" class="fixfactor-cta-button"&gt;Przycisk CTA&lt;/a&gt;
-&lt;a href="#" class="fixfactor-cta-button-alt"&gt;Przycisk alternatywny&lt;/a&gt;</code></pre>
+                                <pre><code>&lt;a href="#" class="fixfactor-cta-button"&gt;CTA Button&lt;/a&gt;
+&lt;a href="#" class="fixfactor-cta-button-alt"&gt;Alternative Button&lt;/a&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
                                 <pre><code>.fixfactor-cta-button {
@@ -2565,12 +2006,12 @@ body {
                 
                 <!-- Section Headers -->
                 <section id="section-headers" class="dsb-section">
-                    <h2 class="dsb-section-title">Nagłówki sekcji</h2>
-                    <p>Nagłówki sekcji zapewniają spójną strukturę informacji i wizualną identyfikację obszarów strony.</p>
+                    <h2 class="dsb-section-title">Section Headers</h2>
+                    <p>Section headers provide consistent information structure and visual identification of page areas.</p>
                     
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Nagłówek sekcji</h3>
+                            <h3 class="dsb-component-title">Section Header</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2579,8 +2020,8 @@ body {
                         </div>
                         <div class="dsb-component-preview">
                             <div class="fixfactor-section-header">
-                                <h2>Tytuł sekcji</h2>
-                                <p>Opis sekcji z dodatkowymi informacjami wyjaśniającymi przeznaczenie i zawartość sekcji.</p>
+                                <h2>Section Title</h2>
+                                <p>Section description with additional information explaining the purpose and content of the section.</p>
                             </div>
                         </div>
                         <div class="dsb-component-code">
@@ -2590,8 +2031,8 @@ body {
                             </div>
                             <div class="dsb-code-panel active" data-panel="html">
                                 <pre><code>&lt;div class="fixfactor-section-header"&gt;
-    &lt;h2&gt;Tytuł sekcji&lt;/h2&gt;
-    &lt;p&gt;Opis sekcji z dodatkowymi informacjami wyjaśniającymi przeznaczenie i zawartość sekcji.&lt;/p&gt;
+    &lt;h2&gt;Section Title&lt;/h2&gt;
+    &lt;p&gt;Section description with additional information explaining the purpose and content of the section.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
@@ -2639,13 +2080,13 @@ body {
                 
                 <!-- Cards Section -->
                 <section id="cards" class="dsb-section">
-                    <h2 class="dsb-section-title">Karty</h2>
-                    <p>Karty są elastycznymi kontenerami do prezentacji powiązanych informacji i interakcji.</p>
+                    <h2 class="dsb-section-title">Cards</h2>
+                    <p>Cards are flexible containers for presenting related information and interactions.</p>
                     
-                    <h3 id="cards-category">Karty kategorii</h3>
+                    <h3 id="cards-category">Category Cards</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Karta kategorii</h3>
+                            <h3 class="dsb-component-title">Category Card</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2658,8 +2099,8 @@ body {
                                     <div class="fixfactor-category-image-container">
                                         <i class="fas fa-mobile-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
                                     </div>
-                                    <h3 class="fixfactor-category-title">Naprawa telefonów</h3>
-                                    <p class="fixfactor-category-description">Wymiana ekranu, baterii, naprawa po zalaniu i inne usługi dla wszystkich marek telefonów.</p>
+                                    <h3 class="fixfactor-category-title">Phone Repair</h3>
+                                    <p class="fixfactor-category-description">Screen replacements, battery issues, charging problems, and water damage repairs for all phone brands.</p>
                                 </a>
                             </div>
                         </div>
@@ -2673,8 +2114,8 @@ body {
     &lt;div class="fixfactor-category-image-container"&gt;
         &lt;i class="fas fa-mobile-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"&gt;&lt;/i&gt;
     &lt;/div&gt;
-    &lt;h3 class="fixfactor-category-title"&gt;Naprawa telefonów&lt;/h3&gt;
-    &lt;p class="fixfactor-category-description"&gt;Wymiana ekranu, baterii, naprawa po zalaniu i inne usługi dla wszystkich marek telefonów.&lt;/p&gt;
+    &lt;h3 class="fixfactor-category-title"&gt;Phone Repair&lt;/h3&gt;
+    &lt;p class="fixfactor-category-description"&gt;Screen replacements, battery issues, charging problems, and water damage repairs for all phone brands.&lt;/p&gt;
 &lt;/a&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
@@ -2777,31 +2218,31 @@ body {
                             <div class="fixfactor-category-image-container">
                                 <i class="fas fa-mobile-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
                             </div>
-                            <h3 class="fixfactor-category-title">Naprawa telefonów</h3>
-                            <p class="fixfactor-category-description">Wymiana ekranu, baterii, naprawa po zalaniu i inne usługi dla wszystkich marek telefonów.</p>
+                            <h3 class="fixfactor-category-title">Phone Repair</h3>
+                            <p class="fixfactor-category-description">Screen replacements, battery issues, charging problems, and water damage repairs for all phone brands.</p>
                         </a>
                         
                         <a href="#" class="fixfactor-category-card">
                             <div class="fixfactor-category-image-container">
                                 <i class="fas fa-tablet-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
                             </div>
-                            <h3 class="fixfactor-category-title">Naprawa tabletów</h3>
-                            <p class="fixfactor-category-description">Naprawa iPadów, Microsoft Surface i innych tabletów z usługą w ten sam dzień.</p>
+                            <h3 class="fixfactor-category-title">Tablet Repair</h3>
+                            <p class="fixfactor-category-description">Repairs for iPads, Microsoft Surface, and other tablets with same-day service.</p>
                         </a>
                         
                         <a href="#" class="fixfactor-category-card">
                             <div class="fixfactor-category-image-container">
                                 <i class="fas fa-laptop fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
                             </div>
-                            <h3 class="fixfactor-category-title">Naprawa laptopów</h3>
-                            <p class="fixfactor-category-description">Naprawa ekranów, płyt głównych, wymiana baterii i naprawa po zalaniu.</p>
+                            <h3 class="fixfactor-category-title">Laptop Repair</h3>
+                            <p class="fixfactor-category-description">Screen repairs, motherboard repairs, battery replacements, and water damage repairs.</p>
                         </a>
                     </div>
                     
-                    <h3 id="cards-usp">Karty USP</h3>
+                    <h3 id="cards-usp">USP Cards</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Karta USP</h3>
+                            <h3 class="dsb-component-title">USP Card</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2814,8 +2255,8 @@ body {
                                     <div class="fixfactor-usp-icon">
                                         <i class="fas fa-tools"></i>
                                     </div>
-                                    <h3 class="fixfactor-usp-title">Kompletne rozwiązania</h3>
-                                    <p class="fixfactor-usp-description">Naprawiamy praktycznie wszystko, co elektroniczne - jeśli części istnieją, a schematy są dostępne, naprawimy to.</p>
+                                    <h3 class="fixfactor-usp-title">Complete Solutions</h3>
+                                    <p class="fixfactor-usp-description">We repair virtually any electronic device - if parts exist and schematics are available, we can fix it.</p>
                                 </div>
                             </div>
                         </div>
@@ -2829,8 +2270,8 @@ body {
     &lt;div class="fixfactor-usp-icon"&gt;
         &lt;i class="fas fa-tools"&gt;&lt;/i&gt;
     &lt;/div&gt;
-    &lt;h3 class="fixfactor-usp-title"&gt;Kompletne rozwiązania&lt;/h3&gt;
-    &lt;p class="fixfactor-usp-description"&gt;Naprawiamy praktycznie wszystko, co elektroniczne - jeśli części istnieją, a schematy są dostępne, naprawimy to.&lt;/p&gt;
+    &lt;h3 class="fixfactor-usp-title"&gt;Complete Solutions&lt;/h3&gt;
+    &lt;p class="fixfactor-usp-description"&gt;We repair virtually any electronic device - if parts exist and schematics are available, we can fix it.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                             </div>
                             <div class="dsb-code-panel" data-panel="css">
@@ -2921,23 +2362,23 @@ body {
                             <div class="fixfactor-usp-icon">
                                 <i class="fas fa-tools"></i>
                             </div>
-                            <h3 class="fixfactor-usp-title">Kompletne rozwiązania</h3>
-                            <p class="fixfactor-usp-description">Naprawiamy praktycznie wszystko, co elektroniczne - jeśli części istnieją, a schematy są dostępne, naprawimy to.</p>
+                            <h3 class="fixfactor-usp-title">Complete Solutions</h3>
+                            <p class="fixfactor-usp-description">We repair virtually any electronic device - if parts exist and schematics are available, we can fix it.</p>
                         </div>
                         
                         <div class="fixfactor-usp-card" style="flex: 1; min-width: 300px;">
                             <div class="fixfactor-usp-icon" style="background: linear-gradient(135deg, rgba(255, 209, 0, 0.15) 0%, rgba(255, 209, 0, 0.08) 100%); color: #e6bc00;">
                                 <i class="fas fa-clock"></i>
                             </div>
-                            <h3 class="fixfactor-usp-title" style="color: var(--text-primary);">Szybki serwis</h3>
-                            <p class="fixfactor-usp-description">Wiele napraw przeprowadzamy tego samego dnia, często gdy czekasz. Nawet złożone naprawy płyt głównych zajmują zazwyczaj 1-3 dni.</p>
+                            <h3 class="fixfactor-usp-title" style="color: var(--text-primary);">Fast Service</h3>
+                            <p class="fixfactor-usp-description">Many repairs are completed same-day, often while you wait. Even complex motherboard repairs typically take just 1-3 days.</p>
                         </div>
                     </div>
                     
-                    <h3 id="cards-testimonials">Karty testimoniali</h3>
+                    <h3 id="cards-testimonials">Testimonial Cards</h3>
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Karta testimonial</h3>
+                            <h3 class="dsb-component-title">Testimonial Card</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -2949,7 +2390,7 @@ body {
                                 <div class="fixfactor-testimonial-card">
                                     <div class="fixfactor-testimonial-content">
                                         <div class="fixfactor-testimonial-quote">"</div>
-                                        <p class="fixfactor-testimonial-text">Absolutnie niesamowita usługa. Mój MacBook miał złożony problem z płytą główną, który Apple uznał za nienaprawialny. Fixfactor naprawił go w 3 dni za ułamek kosztu wymiany. Niesamowita wiedza!</p>
+                                        <p class="fixfactor-testimonial-text">Absolutely amazing service. My MacBook had a complex motherboard issue that Apple deemed unrepairable. Fixfactor fixed it in 3 days for a fraction of the replacement cost. Incredible knowledge!</p>
                                     </div>
                                     <div class="fixfactor-testimonial-author">
                                         <div class="fixfactor-testimonial-avatar">
@@ -2957,7 +2398,7 @@ body {
                                         </div>
                                         <div class="fixfactor-testimonial-info">
                                             <h4 class="fixfactor-testimonial-name">Sarah T.</h4>
-                                            <p class="fixfactor-testimonial-device">Naprawa MacBook Pro</p>
+                                            <p class="fixfactor-testimonial-device">MacBook Pro Repair</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2972,7 +2413,7 @@ body {
                                 <pre><code>&lt;div class="fixfactor-testimonial-card"&gt;
     &lt;div class="fixfactor-testimonial-content"&gt;
         &lt;div class="fixfactor-testimonial-quote"&gt;"&lt;/div&gt;
-        &lt;p class="fixfactor-testimonial-text"&gt;Absolutnie niesamowita usługa. Mój MacBook miał złożony problem z płytą główną, który Apple uznał za nienaprawialny. Fixfactor naprawił go w 3 dni za ułamek kosztu wymiany. Niesamowita wiedza!&lt;/p&gt;
+        &lt;p class="fixfactor-testimonial-text"&gt;Absolutely amazing service. My MacBook had a complex motherboard issue that Apple deemed unrepairable. Fixfactor fixed it in 3 days for a fraction of the replacement cost. Incredible knowledge!&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="fixfactor-testimonial-author"&gt;
         &lt;div class="fixfactor-testimonial-avatar"&gt;
@@ -2980,7 +2421,7 @@ body {
         &lt;/div&gt;
         &lt;div class="fixfactor-testimonial-info"&gt;
             &lt;h4 class="fixfactor-testimonial-name"&gt;Sarah T.&lt;/h4&gt;
-            &lt;p class="fixfactor-testimonial-device"&gt;Naprawa MacBook Pro&lt;/p&gt;
+            &lt;p class="fixfactor-testimonial-device"&gt;MacBook Pro Repair&lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -3093,12 +2534,12 @@ body {
                 
                 <!-- Process Steps Section -->
                 <section id="process-steps" class="dsb-section">
-                    <h2 class="dsb-section-title">Kroki procesu</h2>
-                    <p>Kroki procesu pomagają wizualizować kolejność działań i prowadzić użytkownika przez skomplikowane procedury.</p>
+                    <h2 class="dsb-section-title">Process Steps</h2>
+                    <p>Process steps help visualize the sequence of actions and guide users through complex procedures.</p>
                     
                     <div class="dsb-component">
                         <div class="dsb-component-header">
-                            <h3 class="dsb-component-title">Krok procesu</h3>
+                            <h3 class="dsb-component-title">Process Step</h3>
                             <div class="dsb-component-controls">
                                 <button class="dsb-control-btn" data-action="toggle-code">
                                     <i class="fas fa-code"></i>
@@ -3111,8 +2552,8 @@ body {
                                     <div class="fixfactor-step-number-container">
                                         <div class="fixfactor-step-number">1</div>
                                     </div>
-                                    <h3 class="fixfactor-step-title">Rezerwacja lub wysyłka</h3>
-                                    <p class="fixfactor-step-description">Zarezerwuj wizytę w jednej z naszych londyńskich lokalizacji lub wyślij urządzenie do nas z dowolnego miejsca w Wielkiej Brytanii.</p>
+                                    <h3 class="fixfactor-step-title">Book or Ship</h3>
+                                    <p class="fixfactor-step-description">Book an appointment at one of our London locations or ship your device to us from anywhere in the UK.</p>
                                 </div>
                             </div>
                         </div>
@@ -3123,81 +2564,651 @@ body {
                             </div>
                             <div class="dsb-code-panel active" data-panel="html">
                                 <pre><code>&lt;div class="fixfactor-process-step"&gt;
-    &lt;div class="fixfactor-step-number-container"&gt;
-        &lt;div class="fixfactor-step-number"&gt;1&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;h3 class="fixfactor-step-title"&gt;Rezerwacja lub wysyłka&lt;/h3&gt;
-    &lt;p class="fixfactor-step-description"&gt;Zarezerwuj wizytę w jednej z naszych londyńskich lokalizacji lub wyślij urządzenie do nas z dowolnego miejsca w Wielkiej Brytanii.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-                            </div>
-                            <div class="dsb-code-panel" data-panel="css">
-                                <pre><code>.fixfactor-process-step {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    z-index: 4;
-}
-
-.fixfactor-step-number-container {
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-.fixfactor-step-number {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 50%;
-    margin-bottom: 0;
-    font-size: 24px;
-    font-weight: 700;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    color: var(--fixfactor-primary);
-    border: 2px solid var(--fixfactor-primary);
-    position: relative;
-    transition: transform 0.5s ease;
-}
-
-.fixfactor-process-step:hover .fixfactor-step-number {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 170, 196, 0.2);
-}
-
-.fixfactor-step-number:before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    border-radius: 50%;
-    border: 2px dashed var(--fixfactor-primary);
-    opacity: 0;
-    transform: scale(1.2);
-    transition: all 0.5s ease;
-}
-
-.fixfactor-process-step:hover .fixfactor-step-number:before {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.fixfactor-step-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
-}
-
-.fixfactor-step-description {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.6;
-}</code></pre>
-                            </div>
+                                    &lt;div class="fixfactor-step-number-container"&gt;
+                                    &lt;div class="fixfactor-step-number"&gt;1&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;h3 class="fixfactor-step-title"&gt;Book or Ship&lt;/h3&gt;
+                                &lt;p class="fixfactor-step-description"&gt;Book an appointment at one of our London locations or ship your device to us from anywhere in the UK.&lt;/p&gt;
+                            &lt;/div&gt;</code></pre>
+                                                        </div>
+                                                        <div class="dsb-code-panel" data-panel="css">
+                                                            <pre><code>.fixfactor-process-step {
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                text-align: center;
+                                position: relative;
+                                z-index: 4;
+                            }
+                            
+                            .fixfactor-step-number-container {
+                                position: relative;
+                                margin-bottom: 2rem;
+                            }
+                            
+                            .fixfactor-step-number {
+                                width: 80px;
+                                height: 80px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                background-color: white;
+                                border-radius: 50%;
+                                margin-bottom: 0;
+                                font-size: 24px;
+                                font-weight: 700;
+                                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+                                color: var(--fixfactor-primary);
+                                border: 2px solid var(--fixfactor-primary);
+                                position: relative;
+                                transition: transform 0.5s ease;
+                            }
+                            
+                            .fixfactor-process-step:hover .fixfactor-step-number {
+                                transform: scale(1.1);
+                                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 170, 196, 0.2);
+                            }
+                            
+                            .fixfactor-step-number:before {
+                                content: '';
+                                position: absolute;
+                                top: -8px;
+                                left: -8px;
+                                right: -8px;
+                                bottom: -8px;
+                                border-radius: 50%;
+                                border: 2px dashed var(--fixfactor-primary);
+                                opacity: 0;
+                                transform: scale(1.2);
+                                transition: all 0.5s ease;
+                            }
+                            
+                            .fixfactor-process-step:hover .fixfactor-step-number:before {
+                                opacity: 1;
+                                transform: scale(1);
+                            }
+                            
+                            .fixfactor-step-title {
+                                font-size: 18px;
+                                font-weight: 700;
+                                color: var(--text-primary);
+                                margin-bottom: 0.75rem;
+                            }
+                            
+                            .fixfactor-step-description {
+                                font-size: 14px;
+                                color: var(--text-light);
+                                line-height: 1.6;
+                            }</code></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            
+                                            <!-- Sections Examples -->
+                                            <section id="sections-hero" class="dsb-section">
+                                                <h2 class="dsb-section-title">Hero Section</h2>
+                                                <p>The Hero section is a key element of the first impression, presenting the most important messages and encouraging action.</p>
+                                                
+                                                <div class="dsb-component">
+                                                    <div class="dsb-component-header">
+                                                        <h3 class="dsb-component-title">Hero Section Structure</h3>
+                                                        <div class="dsb-component-controls">
+                                                            <button class="dsb-control-btn" data-action="toggle-code">
+                                                                <i class="fas fa-code"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dsb-component-code">
+                                                        <div class="dsb-code-tabs">
+                                                            <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                                            <button class="dsb-code-tab" data-tab="css">CSS</button>
+                                                        </div>
+                                                        <div class="dsb-code-panel active" data-panel="html">
+                                                            <pre><code>&lt;section class="fixfactor-section fixfactor-hero-section"&gt;
+                                &lt;div class="fixfactor-floating-element float-1"&gt;&lt;/div&gt;
+                                &lt;div class="fixfactor-floating-element float-2"&gt;&lt;/div&gt;
+                                &lt;div class="fixfactor-floating-element float-3"&gt;&lt;/div&gt;
+                                
+                                &lt;div class="fixfactor-container"&gt;
+                                    &lt;!-- Mobile Image (shown only on small screens) --&gt;
+                                    &lt;div class="fixfactor-hero-mobile-image"&gt;
+                                        &lt;img src="hero-mobile.jpg" alt="Fixfactor Hero Image"&gt;
+                                    &lt;/div&gt;
+                                    
+                                    &lt;div class="fixfactor-hero-content fadeInLeft"&gt;
+                                        &lt;h1&gt;Expert &lt;span class="text-gradient"&gt;Device Repair&lt;/span&gt; for London & Beyond&lt;/h1&gt;
+                                        &lt;p&gt;From cracked screens to motherboard repairs, we fix all phones, computers, and electronics with high-quality parts and a 6-month warranty.&lt;/p&gt;
+                                        &lt;a href="#" class="fixfactor-button"&gt;Start Your Repair&lt;/a&gt;
+                                        &lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Book Appointment&lt;/a&gt;
+                                    &lt;/div&gt;
+                                    
+                                    &lt;div class="fixfactor-hero-image fadeInRight"&gt;
+                                        &lt;div class="fixfactor-blob-container"&gt;
+                                            &lt;div class="fixfactor-blob-shape"&gt;&lt;/div&gt;
+                                            &lt;div class="fixfactor-blob-shape-2"&gt;&lt;/div&gt;
+                                            &lt;img src="hero.jpg" alt="Fixfactor Hero Image" class="fixfactor-blob-img"&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/section&gt;</code></pre>
+                                                        </div>
+                                                        <div class="dsb-code-panel" data-panel="css">
+                                                            <pre><code>.fixfactor-hero-section {
+                                padding: 8rem 0 6rem;
+                                position: relative;
+                                overflow: hidden;
+                                background: linear-gradient(135deg, #f8fcfd 0%, #edf7fa 100%);
+                                z-index: 1;
+                                clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+                                padding-bottom: 10rem;
+                            }
+                            
+                            .fixfactor-hero-section:before {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-image: 
+                                    radial-gradient(rgba(0, 170, 196, 0.03) 2px, transparent 2px),
+                                    radial-gradient(rgba(255, 209, 0, 0.02) 1.5px, transparent 1.5px);
+                                background-size: 30px 30px, 20px 20px;
+                                background-position: 0 0, 15px 15px;
+                                opacity: 0.8;
+                                z-index: -1;
+                            }
+                            
+                            .fixfactor-hero-content {
+                                max-width: 600px;
+                                margin-right: auto;
+                                position: relative;
+                                z-index: 5;
+                            }
+                            
+                            .fixfactor-hero-section h1 {
+                                font-size: 56px;
+                                font-weight: 800;
+                                margin-bottom: 1.5rem;
+                                color: var(--text-primary);
+                                line-height: 1.2;
+                                text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+                            }
+                            
+                            .fixfactor-hero-section p {
+                                font-size: 18px;
+                                color: var(--text-secondary);
+                                margin-bottom: 2.5rem;
+                                line-height: 1.6;
+                            }</code></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            
+                                            <section id="sections-categories" class="dsb-section">
+                                                <h2 class="dsb-section-title">Categories Section</h2>
+                                                <p>The Categories section presents the main areas of business or services, allowing users to quickly find topics of interest.</p>
+                                                
+                                                <div class="dsb-component">
+                                                    <div class="dsb-component-header">
+                                                        <h3 class="dsb-component-title">Categories Section Structure</h3>
+                                                        <div class="dsb-component-controls">
+                                                            <button class="dsb-control-btn" data-action="toggle-code">
+                                                                <i class="fas fa-code"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dsb-component-code">
+                                                        <div class="dsb-code-tabs">
+                                                            <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                                            <button class="dsb-code-tab" data-tab="css">CSS</button>
+                                                        </div>
+                                                        <div class="dsb-code-panel active" data-panel="html">
+                                                            <pre><code>&lt;section id="repair-categories" class="fixfactor-section fixfactor-categories-section"&gt;
+                                &lt;div class="fixfactor-categories-bg"&gt;&lt;/div&gt;
+                                &lt;div class="fixfactor-container"&gt;
+                                    &lt;div class="fixfactor-section-header fadeInUp"&gt;
+                                        &lt;h2&gt;What Can We Fix For You?&lt;/h2&gt;
+                                        &lt;p&gt;We repair a wide range of devices with premium-quality parts and expert technicians&lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="fixfactor-categories-grid"&gt;
+                                        &lt;!-- Phone --&gt;
+                                        &lt;a href="#" class="fixfactor-category-card"&gt;
+                                            &lt;div class="fixfactor-category-image-container"&gt;
+                                                &lt;img src="phone-icon.png" alt="Phone Repair" class="fixfactor-category-image"&gt;
+                                            &lt;/div&gt;
+                                            &lt;h3 class="fixfactor-category-title"&gt;Phone&lt;/h3&gt;
+                                            &lt;p class="fixfactor-category-description"&gt;Screen replacements, battery issues, charging problems, and water damage repairs for all phone brands&lt;/p&gt;
+                                        &lt;/a&gt;
+                                        
+                                        &lt;!-- More category cards --&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/section&gt;</code></pre>
+                                                        </div>
+                                                        <div class="dsb-code-panel" data-panel="css">
+                                                            <pre><code>.fixfactor-categories-section {
+                                padding: 0 0 5rem;
+                                background-color: var(--background-alt);
+                                position: relative;
+                                overflow: hidden;
+                                margin-top: -2px;
+                                clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 100%);
+                                padding-top: 8rem;
+                            }
+                            
+                            .fixfactor-categories-bg {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-image: 
+                                    radial-gradient(circle at 80% 20%, rgba(0, 170, 196, 0.08) 0%, transparent 20%),
+                                    radial-gradient(circle at 20% 80%, rgba(255, 209, 0, 0.08) 0%, transparent 25%),
+                                    linear-gradient(to right, rgba(0, 170, 196, 0.03) 1px, transparent 1px),
+                                    linear-gradient(to bottom, rgba(0, 170, 196, 0.03) 1px, transparent 1px);
+                                background-size: auto, auto, 25px 25px, 25px 25px;
+                                z-index: 1;
+                            }
+                            
+                            .fixfactor-categories-grid {
+                                display: grid;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 2rem;
+                                margin-top: 1rem;
+                                position: relative;
+                                z-index: 2;
+                            }</code></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            
+                                            <section id="sections-cta" class="dsb-section">
+                                                <h2 class="dsb-section-title">CTA Section</h2>
+                                                <p>The CTA (Call to Action) section is designed to prompt users to take a specific action, such as making contact or ordering a service.</p>
+                                                
+                                                <div class="dsb-component">
+                                                    <div class="dsb-component-header">
+                                                        <h3 class="dsb-component-title">CTA Section Structure</h3>
+                                                        <div class="dsb-component-controls">
+                                                            <button class="dsb-control-btn" data-action="toggle-code">
+                                                                <i class="fas fa-code"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dsb-component-code">
+                                                        <div class="dsb-code-tabs">
+                                                            <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                                            <button class="dsb-code-tab" data-tab="css">CSS</button>
+                                                        </div>
+                                                        <div class="dsb-code-panel active" data-panel="html">
+                                                            <pre><code>&lt;section class="fixfactor-section fixfactor-cta-section"&gt;
+                                &lt;div class="fixfactor-cta-bg"&gt;&lt;/div&gt;
+                                &lt;div class="fixfactor-cta-pattern"&gt;&lt;/div&gt;
+                                &lt;div class="fixfactor-cta-dots"&gt;&lt;/div&gt;
+                                &lt;div class="fixfactor-container"&gt;
+                                    &lt;div class="fixfactor-cta-content"&gt;
+                                        &lt;h2 class="fadeInUp"&gt;Ready to Get Your Device Fixed?&lt;/h2&gt;
+                                        &lt;p class="fadeInUp"&gt;Whether you need a quick screen replacement or complex data recovery, our expert team is ready to help.&lt;/p&gt;
+                                        &lt;div class="fixfactor-cta-buttons"&gt;
+                                            &lt;a href="#" class="fixfactor-cta-button fadeInUp"&gt;Start Your Repair&lt;/a&gt;
+                                            &lt;a href="#" class="fixfactor-cta-button-alt fadeInUp"&gt;Contact Us&lt;/a&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/section&gt;</code></pre>
+                                                        </div>
+                                                        <div class="dsb-code-panel" data-panel="css">
+                                                            <pre><code>.fixfactor-cta-section {
+                                position: relative;
+                                z-index: 5;
+                                padding: 7rem 3rem;
+                                margin: -3rem 5% 0;
+                                border-radius: 20px;
+                                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18), 0 10px 20px rgba(0, 0, 0, 0.1);
+                                max-width: 90%;
+                                width: auto;
+                            }
+                            
+                            .fixfactor-cta-bg {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: linear-gradient(135deg, #0a4350 0%, #062830 100%);
+                                border-radius: 20px;
+                                z-index: 1;
+                            }
+                            
+                            .fixfactor-cta-pattern {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: 
+                                    radial-gradient(circle at 15% 25%, rgba(0, 170, 196, 0.15) 0%, transparent 20%),
+                                    radial-gradient(circle at 85% 75%, rgba(0, 170, 196, 0.12) 0%, transparent 25%),
+                                    radial-gradient(circle at 75% 25%, rgba(255, 209, 0, 0.08) 0%, transparent 15%),
+                                    radial-gradient(circle at 35% 65%, rgba(255, 209, 0, 0.05) 0%, transparent 10%);
+                                z-index: 2;
+                                border-radius: 20px;
+                            }
+                            
+                            .fixfactor-cta-content {
+                                position: relative;
+                                z-index: 3;
+                                text-align: center;
+                                color: white;
+                            }</code></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            
+                                            <!-- Implementation Guidelines -->
+                                            <section id="implementation" class="dsb-section">
+                                                <h2 class="dsb-section-title">Implementation Guidelines</h2>
+                                                <p>The following guidelines help maintain consistency and quality when implementing the Design System in Fixfactor projects.</p>
+                                                
+                                                <h3>1. Visual Consistency</h3>
+                                                <ul>
+                                                    <li>Use only defined colors, spacing, and typography</li>
+                                                    <li>Maintain appropriate element proportions</li>
+                                                    <li>Follow interface rules</li>
+                                                </ul>
+                                                
+                                                <h3>2. Accessibility</h3>
+                                                <ul>
+                                                    <li>Maintain appropriate contrast (WCAG AA)</li>
+                                                    <li>Provide alternative descriptions for visual elements</li>
+                                                    <li>Ensure proper heading hierarchy</li>
+                                                </ul>
+                                                
+                                                <h3>3. Performance</h3>
+                                                <ul>
+                                                    <li>Optimize images</li>
+                                                    <li>Minimize the number of animations on mobile pages</li>
+                                                    <li>Use lazy loading for off-screen elements</li>
+                                                </ul>
+                                                
+                                                <h3>4. WordPress Implementation</h3>
+                                                <ul>
+                                                    <li>Components should be copied to an HTML block in Gutenberg</li>
+                                                    <li>JavaScript should be placed at the end of the HTML block</li>
+                                                    <li>wp_enqueue_scripts can be used for loading code for better performance</li>
+                                                </ul>
+                                            </section>
+                                            
+                                            <section id="code-structure" class="dsb-section">
+                                                <h2 class="dsb-section-title">Code Structure</h2>
+                                                <p>Proper code structure ensures ease of maintenance and future system expansion.</p>
+                                                
+                                                <h3>Basic CSS Structure</h3>
+                                                <div class="dsb-component">
+                                                    <div class="dsb-component-header">
+                                                        <h3 class="dsb-component-title">CSS Organization</h3>
+                                                        <div class="dsb-component-controls">
+                                                            <button class="dsb-control-btn" data-action="copy-code">
+                                                                <i class="fas fa-copy"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dsb-component-code" style="display: block;">
+                                                        <pre><code>/* ====== VARIABLES ====== */
+                            :root {
+                                /* Colors */
+                                --fixfactor-primary: #00aac4;
+                                --fixfactor-primary-dark: #008ca3;
+                                /* etc. */
+                                
+                                /* Spacing */
+                                --space-xs: 0.5rem;
+                                --space-s: 1rem;
+                                /* etc. */
+                                
+                                /* Other variables */
+                                --border-radius: 9px;
+                                --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                            }
+                            
+                            /* ====== RESET & BASICS ====== */
+                            *, *::before, *::after {
+                                box-sizing: border-box;
+                            }
+                            
+                            body {
+                                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+                                color: var(--text-primary);
+                                line-height: 1.6;
+                            }
+                            
+                            /* ====== ATOMIC COMPONENTS ====== */
+                            /* Buttons */
+                            .fixfactor-button {
+                                /* button styles */
+                            }
+                            
+                            /* ====== COMPLEX COMPONENTS ====== */
+                            /* Cards */
+                            .fixfactor-category-card {
+                                /* card styles */
+                            }
+                            
+                            /* ====== SECTIONS ====== */
+                            /* Hero */
+                            .fixfactor-hero-section {
+                                /* hero section styles */
+                            }
+                            
+                            /* ====== ANIMATIONS ====== */
+                            @keyframes float {
+                                /* animation definition */
+                            }
+                            
+                            /* ====== RESPONSIVENESS ====== */
+                            @media (max-width: 992px) {
+                                /* styles for smaller screens */
+                            }</code></pre>
+                                                    </div>
+                                                </div>
+                                                
+                                                <h3>Basic HTML Structure</h3>
+                                                <div class="dsb-component">
+                                                    <div class="dsb-component-header">
+                                                        <h3 class="dsb-component-title">HTML Organization</h3>
+                                                        <div class="dsb-component-controls">
+                                                            <button class="dsb-control-btn" data-action="copy-code">
+                                                                <i class="fas fa-copy"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dsb-component-code" style="display: block;">
+                                                        <pre><code>&lt;!-- wp:html --&gt;
+                            &lt;!-- Stylesheets --&gt;
+                            &lt;style&gt;
+                                /* Insert CSS with proper structure here */
+                            &lt;/style&gt;
+                            
+                            &lt;!-- Hero Section --&gt;
+                            &lt;section class="fixfactor-section fixfactor-hero-section"&gt;
+                                &lt;!-- Section content --&gt;
+                            &lt;/section&gt;
+                            
+                            &lt;!-- Diagonal Divider --&gt;
+                            &lt;div class="fixfactor-diagonal-divider diagonal-white-to-light"&gt;&lt;/div&gt;
+                            
+                            &lt;!-- Categories Section --&gt;
+                            &lt;section class="fixfactor-section fixfactor-categories-section"&gt;
+                                &lt;!-- Section content --&gt;
+                            &lt;/section&gt;
+                            
+                            &lt;!-- JavaScript --&gt;
+                            &lt;script&gt;
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // JavaScript initialization
+                                });
+                            &lt;/script&gt;
+                            &lt;!-- /wp:html --&gt;</code></pre>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            
+                                            <div class="dsb-footer">
+                                                <p>Fixfactor Design System Bible v1.0 &copy; 2025</p>
+                                            </div>
+                                        </div>
+                                    </main>
+                                </div>
+                                
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        // Toggle mobile menu
+                                        const menuToggle = document.getElementById('menu-toggle');
+                                        const sidebar = document.getElementById('sidebar');
+                                        
+                                        menuToggle.addEventListener('click', function() {
+                                            sidebar.classList.toggle('active');
+                                        });
+                                        
+                                        // Navigation active state
+                                        const navLinks = document.querySelectorAll('.dsb-nav-link, .dsb-nav-sublink');
+                                        
+                                        navLinks.forEach(link => {
+                                            link.addEventListener('click', function(e) {
+                                                // Remove active class from all links
+                                                navLinks.forEach(link => link.classList.remove('active'));
+                                                
+                                                // Add active class to clicked link
+                                                this.classList.add('active');
+                                                
+                                                // If sidebar is open on mobile, close it
+                                                if (window.innerWidth <= 992) {
+                                                    sidebar.classList.remove('active');
+                                                }
+                                            });
+                                            
+                                            // Check if link href matches current hash
+                                            if (link.getAttribute('href') === window.location.hash) {
+                                                link.classList.add('active');
+                                            }
+                                        });
+                                        
+                                        // Code toggle
+                                        const toggleButtons = document.querySelectorAll('[data-action="toggle-code"]');
+                                        
+                                        toggleButtons.forEach(button => {
+                                            button.addEventListener('click', function() {
+                                                const component = this.closest('.dsb-component');
+                                                const codeBlock = component.querySelector('.dsb-component-code');
+                                                
+                                                if (codeBlock.style.display === 'block') {
+                                                    codeBlock.style.display = 'none';
+                                                } else {
+                                                    codeBlock.style.display = 'block';
+                                                }
+                                            });
+                                        });
+                                        
+                                        // Code tabs
+                                        const codeTabs = document.querySelectorAll('.dsb-code-tab');
+                                        
+                                        codeTabs.forEach(tab => {
+                                            tab.addEventListener('click', function() {
+                                                const tabGroup = this.closest('.dsb-code-tabs');
+                                                const panels = this.closest('.dsb-component-code').querySelectorAll('.dsb-code-panel');
+                                                const tabTarget = this.getAttribute('data-tab');
+                                                
+                                                // Remove active class from all tabs and panels
+                                                tabGroup.querySelectorAll('.dsb-code-tab').forEach(tab => tab.classList.remove('active'));
+                                                panels.forEach(panel => panel.classList.remove('active'));
+                                                
+                                                // Add active class to clicked tab and corresponding panel
+                                                this.classList.add('active');
+                                                document.querySelector(`.dsb-code-panel[data-panel="${tabTarget}"]`).classList.add('active');
+                                            });
+                                        });
+                                        
+                                        // Copy color button
+                                        const copyColorButtons = document.querySelectorAll('.dsb-copy-code');
+                                        
+                                        copyColorButtons.forEach(button => {
+                                            button.addEventListener('click', function() {
+                                                const colorValue = this.getAttribute('data-copy');
+                                                navigator.clipboard.writeText(colorValue).then(() => {
+                                                    const originalText = this.innerHTML;
+                                                    this.innerHTML = '<i class="fas fa-check"></i> Copied';
+                                                    
+                                                    setTimeout(() => {
+                                                        this.innerHTML = originalText;
+                                                    }, 2000);
+                                                });
+                                            });
+                                        });
+                                        
+                                        // Copy code button
+                                        const copyCodeButtons = document.querySelectorAll('[data-action="copy-code"]');
+                                        
+                                        copyCodeButtons.forEach(button => {
+                                            button.addEventListener('click', function() {
+                                                const component = this.closest('.dsb-component');
+                                                const codeBlock = component.querySelector('pre code');
+                                                
+                                                navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                                                    const originalText = this.innerHTML;
+                                                    this.innerHTML = '<i class="fas fa-check"></i>';
+                                                    
+                                                    setTimeout(() => {
+                                                        this.innerHTML = originalText;
+                                                    }, 2000);
+                                                });
+                                            });
+                                        });
+                                        
+                                        // Theme toggle (placeholder for future dark mode)
+                                        const themeToggle = document.getElementById('theme-toggle');
+                                        
+                                        themeToggle.addEventListener('click', function() {
+                                            // Toggle between sun and moon icons
+                                            if (this.innerHTML.includes('fa-sun')) {
+                                                this.innerHTML = '<i class="fas fa-moon"></i>';
+                                                // Future dark mode code would go here
+                                            } else {
+                                                this.innerHTML = '<i class="fas fa-sun"></i>';
+                                                // Future light mode code would go here
+                                            }
+                                        });
+                                        
+                                        // Smooth scroll for hash links
+                                        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                                            anchor.addEventListener('click', function(e) {
+                                                e.preventDefault();
+                                                
+                                                const targetId = this.getAttribute('href');
+                                                if (targetId === '#') return;
+                                                
+                                                const targetElement = document.querySelector(targetId);
+                                                if (targetElement) {
+                                                    const headerHeight = document.querySelector('.dsb-header').offsetHeight;
+                                                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                                                    
+                                                    window.scrollTo({
+                                                        top: targetPosition,
+                                                        behavior: 'smooth'
+                                                    });
+                                                    
+                                                    // Update URL hash without scrolling
+                                                    history.pushState(null, null, targetId);
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </body>
+                            </html>
