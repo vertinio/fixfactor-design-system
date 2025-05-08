@@ -1,0 +1,3203 @@
+<!DOCTYPE html>
+<meta name="description" content="Fixfactor Design System Bible - kompletna dokumentacja komponentów UI">
+<meta name="author" content="Fixfactor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="assets/images/favicon.ico">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixfactor Design System Bible</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <style>
+        :root {
+            /* Fixfactor Color Palette */
+            --fixfactor-primary: #00aac4;
+            --fixfactor-primary-dark: #008ca3;
+            --fixfactor-primary-light: rgba(0, 170, 196, 0.1);
+            --fixfactor-accent: #FFD100;
+            --fixfactor-accent-dark: #E6BC00;
+            --fixfactor-accent-light: rgba(255, 209, 0, 0.1);
+            --text-primary: #0a0a0a;
+            --text-secondary: #121212;
+            --text-light: #7a7a7a;
+            --background: #ffffff;
+            --background-alt: #f7f9fc;
+            --cta-background: #0a1014;
+            --cta-gradient: linear-gradient(135deg, #0a1014 0%, #006d7e 120%);
+            
+            /* Spacing Variables */
+            --space-xs: 0.5rem;   /* 8px */
+            --space-s: 1rem;      /* 16px */
+            --space-m: 1.5rem;    /* 24px */
+            --space-l: 2rem;      /* 32px */
+            --space-xl: 3rem;     /* 48px */
+            --space-xxl: 5rem;    /* 80px */
+            
+            /* Shadows */
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --card-hover-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            --button-shadow: 0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);
+            --button-hover-shadow: 0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);
+            
+            /* Other Variables */
+            --border-radius: 9px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --sidebar-width: 280px;
+            --header-height: 70px;
+            --code-bg: #f8f9fa;
+        }
+        
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-color: var(--background);
+        }
+        
+        a {
+            color: var(--fixfactor-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--fixfactor-primary-dark);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: var(--space-s);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-top: var(--space-l);
+            margin-bottom: var(--space-m);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-top: var(--space-m);
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+        }
+        
+        p {
+            margin-bottom: var(--space-m);
+        }
+        
+        code {
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.9em;
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        
+        pre {
+            background-color: var(--code-bg);
+            border-radius: var(--border-radius);
+            padding: var(--space-s);
+            margin-bottom: var(--space-m);
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.95em;
+            color: var(--text-primary);
+            display: block;
+        }
+        
+        /* Page Layout */
+        .dsb-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .dsb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--background);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s ease;
+            padding-bottom: var(--space-xl);
+        }
+        
+        .dsb-sidebar-header {
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-m);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dsb-sidebar-logo {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+        
+        .dsb-sidebar-logo img {
+            height: 30px;
+            margin-right: var(--space-xs);
+        }
+        
+        .dsb-sidebar-logo span {
+            color: var(--fixfactor-primary);
+        }
+        
+        .dsb-nav {
+            padding: var(--space-m);
+        }
+        
+        .dsb-nav-category {
+            margin-bottom: var(--space-m);
+        }
+        
+        .dsb-nav-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: var(--space-xs);
+            letter-spacing: 0.05em;
+        }
+        
+        .dsb-nav-list {
+            list-style: none;
+        }
+        
+        .dsb-nav-item {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .dsb-nav-link {
+            display: block;
+            padding: var(--space-xs) var(--space-s);
+            color: var(--text-secondary);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .dsb-nav-link:hover {
+            background-color: var(--fixfactor-primary-light);
+            color: var(--fixfactor-primary);
+        }
+        
+        .dsb-nav-link.active {
+            background-color: var(--fixfactor-primary);
+            color: white;
+        }
+        
+        .dsb-nav-sublink {
+            display: block;
+            padding: var(--space-xs) var(--space-s) var(--space-xs) calc(var(--space-s) + 1rem);
+            color: var(--text-secondary);
+            border-radius: var(--border-radius);
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .dsb-nav-sublink:hover {
+            background-color: var(--fixfactor-primary-light);
+            color: var(--fixfactor-primary);
+        }
+        
+        .dsb-nav-sublink.active {
+            color: var(--fixfactor-primary);
+            font-weight: 600;
+        }
+        
+        /* Main Content */
+        .dsb-main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            min-height: 100vh;
+        }
+        
+        .dsb-header {
+            position: sticky;
+            top: 0;
+            height: var(--header-height);
+            background-color: var(--background);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-l);
+            z-index: 99;
+        }
+        
+        .dsb-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            padding: var(--space-xs);
+        }
+        
+        .dsb-header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .dsb-version {
+            padding: var(--space-xs) var(--space-s);
+            background-color: var(--fixfactor-primary-light);
+            color: var(--fixfactor-primary);
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: var(--space-m);
+        }
+        
+        .dsb-theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            padding: var(--space-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dsb-content {
+            padding: var(--space-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dsb-section {
+            margin-bottom: var(--space-xxl);
+        }
+        
+        .dsb-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dsb-section-title {
+            display: inline-block;
+            position: relative;
+            margin-bottom: var(--space-l);
+        }
+        
+        .dsb-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--fixfactor-primary), var(--fixfactor-accent));
+            border-radius: 10px;
+        }
+        
+        /* Component Display */
+        .dsb-component {
+            margin-bottom: var(--space-xl);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .dsb-component-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-s) var(--space-m);
+            background-color: var(--background-alt);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dsb-component-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .dsb-component-controls {
+            display: flex;
+            gap: var(--space-xs);
+        }
+        
+        .dsb-control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: var(--space-xs);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dsb-control-btn:hover {
+            color: var(--fixfactor-primary);
+            background-color: var(--fixfactor-primary-light);
+        }
+        
+        .dsb-component-preview {
+            padding: var(--space-l);
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            position: relative;
+        }
+        
+        .dsb-component-code {
+            display: none;
+            background-color: var(--code-bg);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dsb-code-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dsb-code-tab {
+            padding: var(--space-xs) var(--space-m);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .dsb-code-tab.active {
+            color: var(--fixfactor-primary);
+            border-bottom: 2px solid var(--fixfactor-primary);
+        }
+        
+        .dsb-code-panel {
+            display: none;
+            padding: 0;
+        }
+        
+        .dsb-code-panel.active {
+            display: block;
+        }
+        
+        .dsb-copy-code {
+            position: absolute;
+            top: var(--space-s);
+            right: var(--space-s);
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            padding: var(--space-xs) var(--space-s);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .dsb-copy-code:hover {
+            background-color: var(--fixfactor-primary-light);
+            color: var(--fixfactor-primary);
+        }
+        
+        .dsb-copy-code i {
+            font-size: 0.8rem;
+        }
+        
+        /* Color Palette */
+        .dsb-colors {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-m);
+            margin-bottom: var(--space-l);
+        }
+        
+        .dsb-color-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+        
+        .dsb-color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        
+        .dsb-color-preview {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .dsb-color-info {
+            padding: var(--space-s);
+            background-color: white;
+        }
+        
+        .dsb-color-name {
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .dsb-color-value {
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* Typography */
+        .dsb-typography-sample {
+            margin-bottom: var(--space-l);
+            padding-bottom: var(--space-m);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dsb-typography-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-s);
+        }
+        
+        .dsb-typography-name {
+            font-weight: 600;
+            margin-right: var(--space-s);
+        }
+        
+        .dsb-typography-info {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* Buttons */
+        .dsb-button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-m);
+            margin-bottom: var(--space-m);
+        }
+        
+        /* Cards */
+        .dsb-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-l);
+            margin-bottom: var(--space-l);
+        }
+        
+        /* Interactive Ruler */
+        .dsb-ruler {
+            margin-bottom: var(--space-l);
+        }
+        
+        .dsb-ruler-labels {
+            display: flex;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .dsb-ruler-label {
+            width: 100px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        .dsb-ruler-bars {
+            display: flex;
+            align-items: flex-end;
+            height: 50px;
+        }
+        
+        .dsb-ruler-bar {
+            background-color: var(--fixfactor-primary);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .dsb-ruler-bar:hover {
+            background-color: var(--fixfactor-accent);
+        }
+        
+        /* Footer */
+        .dsb-footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: var(--space-l) 0;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Utility Classes */
+        .mb-xs { margin-bottom: var(--space-xs); }
+        .mb-s { margin-bottom: var(--space-s); }
+        .mb-m { margin-bottom: var(--space-m); }
+        .mb-l { margin-bottom: var(--space-l); }
+        .mb-xl { margin-bottom: var(--space-xl); }
+        
+        .mt-xs { margin-top: var(--space-xs); }
+        .mt-s { margin-top: var(--space-s); }
+        .mt-m { margin-top: var(--space-m); }
+        .mt-l { margin-top: var(--space-l); }
+        .mt-xl { margin-top: var(--space-xl); }
+        
+        .p-xs { padding: var(--space-xs); }
+        .p-s { padding: var(--space-s); }
+        .p-m { padding: var(--space-m); }
+        .p-l { padding: var(--space-l); }
+        .p-xl { padding: var(--space-xl); }
+        
+        /* Fixfactor Components */
+        /* Button */
+        .fixfactor-button {
+            display: inline-block;
+            background-color: var(--fixfactor-primary);
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 1.1rem 2.2rem;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .fixfactor-button:hover {
+            background-color: var(--fixfactor-primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .fixfactor-button-secondary {
+            background-color: var(--fixfactor-accent);
+            color: var(--text-primary);
+            box-shadow: 0 10px 20px rgba(255, 209, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fixfactor-button-secondary:hover {
+            background-color: var(--fixfactor-accent-dark);
+            box-shadow: 0 15px 25px rgba(255, 209, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+        }
+        
+        /* Category Card */
+        .fixfactor-category-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2.5rem 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: white;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            height: 280px;
+            text-decoration: none;
+            z-index: 1;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .fixfactor-category-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 170, 196, 0.08) 0%, rgba(255, 209, 0, 0.08) 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .fixfactor-category-card:hover:before {
+            opacity: 1;
+        }
+        
+        .fixfactor-category-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+        }
+        
+        .fixfactor-category-card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--fixfactor-primary), var(--fixfactor-accent));
+            transition: height 0.3s ease;
+        }
+        
+        .fixfactor-category-card:hover:after {
+            height: 100%;
+        }
+        
+        .fixfactor-category-image-container {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            margin-bottom: 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 170, 196, 0.15) 0%, rgba(255, 209, 0, 0.15) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fixfactor-category-card:hover .fixfactor-category-image-container {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .fixfactor-category-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+        
+        .fixfactor-category-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .fixfactor-category-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        /* USP Card */
+        .fixfactor-usp-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            position: relative;
+            padding: 3rem 2rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow), 0 3px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+        }
+        
+        .fixfactor-usp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fixfactor-usp-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--fixfactor-primary);
+        }
+        
+        .fixfactor-usp-icon {
+            margin: 0 auto 2rem;
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 170, 196, 0.15) 0%, rgba(0, 170, 196, 0.08) 100%);
+            color: var(--fixfactor-primary);
+            font-size: 32px;
+            transform: rotate(0deg);
+            transition: transform 0.5s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+        }
+        
+        .fixfactor-usp-card:hover .fixfactor-usp-icon {
+            transform: rotate(10deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .fixfactor-usp-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .fixfactor-usp-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 50px;
+            height: 3px;
+            background: var(--fixfactor-primary);
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fixfactor-usp-description {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-top: 1.5rem;
+        }
+        
+        /* Testimonial Card */
+        .fixfactor-testimonial-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--card-shadow), 0 3px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fixfactor-testimonial-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fixfactor-testimonial-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--fixfactor-primary), var(--fixfactor-accent));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .fixfactor-testimonial-card:hover:before {
+            opacity: 1;
+        }
+        
+        .fixfactor-testimonial-content {
+            flex-grow: 1;
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .fixfactor-testimonial-quote {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 130px;
+            color: rgba(0, 170, 196, 0.15);
+            font-family: Georgia, serif;
+            line-height: 1;
+            z-index: 1;
+        }
+        
+        .fixfactor-testimonial-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .fixfactor-testimonial-author {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .fixfactor-testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background-color: rgba(0, 170, 196, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .fixfactor-testimonial-avatar i {
+            font-size: 28px;
+            color: var(--fixfactor-primary);
+        }
+        
+        .fixfactor-testimonial-info {
+            flex-grow: 1;
+        }
+        
+        .fixfactor-testimonial-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .fixfactor-testimonial-device {
+            font-size: 14px;
+            color: var(--fixfactor-primary);
+            font-weight: 600;
+        }
+        
+        /* Section Header */
+        .fixfactor-section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .fixfactor-section-header h2 {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+        }
+        
+        .fixfactor-section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--fixfactor-primary), var(--fixfactor-accent));
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fixfactor-section-header p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 1.8rem auto 0;
+        }
+        
+        /* Process Step */
+        .fixfactor-process-step {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 4;
+        }
+        
+        .fixfactor-step-number-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .fixfactor-step-number {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            margin-bottom: 0;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            color: var(--fixfactor-primary);
+            border: 2px solid var(--fixfactor-primary);
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+        
+        .fixfactor-process-step:hover .fixfactor-step-number {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 170, 196, 0.2);
+        }
+        
+        .fixfactor-step-number:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            border: 2px dashed var(--fixfactor-primary);
+            opacity: 0;
+            transform: scale(1.2);
+            transition: all 0.5s ease;
+        }
+        
+        .fixfactor-process-step:hover .fixfactor-step-number:before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .fixfactor-step-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .fixfactor-step-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .dsb-sidebar {
+                transform: translateX(calc(-1 * var(--sidebar-width)));
+            }
+            
+            .dsb-sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .dsb-main {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .dsb-menu-toggle {
+                display: block;
+            }
+            
+            .dsb-content {
+                padding: var(--space-l);
+            }
+            
+            .dsb-colors {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .dsb-card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dsb-content {
+                padding: var(--space-m);
+            }
+            
+            .fixfactor-section-header h2 {
+                font-size: 32px;
+            }
+            
+            .fixfactor-section-header p {
+                font-size: 16px;
+            }
+            
+            .dsb-component-preview {
+                padding: var(--space-m);
+            }
+            
+            .dsb-button-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .dsb-card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .dsb-header {
+                padding: 0 var(--space-m);
+            }
+            
+            .dsb-version {
+                display: none;
+            }
+            
+            .dsb-content {
+                padding: var(--space-s);
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .fixfactor-section-header h2 {
+                font-size: 26px;
+            }
+            
+            .fixfactor-button {
+                width: 100%;
+                padding: 1rem 1.5rem;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dsb-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="dsb-sidebar" id="sidebar">
+            <div class="dsb-sidebar-header">
+                <a href="#" class="dsb-sidebar-logo">
+                    <span>Fixfactor</span> DSB
+                </a>
+            </div>
+            
+            <nav class="dsb-nav">
+                <div class="dsb-nav-category">
+                    <div class="dsb-nav-title">Wprowadzenie</div>
+                    <ul class="dsb-nav-list">
+                        <li class="dsb-nav-item">
+                            <a href="#overview" class="dsb-nav-link active">Przegląd</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#philosophy" class="dsb-nav-link">Filozofia designu</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="dsb-nav-category">
+                    <div class="dsb-nav-title">Podstawy</div>
+                    <ul class="dsb-nav-list">
+                        <li class="dsb-nav-item">
+                            <a href="#colors" class="dsb-nav-link">Kolory</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#typography" class="dsb-nav-link">Typografia</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#spacing" class="dsb-nav-link">Przestrzeń</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#shadows" class="dsb-nav-link">Cienie</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="dsb-nav-category">
+                    <div class="dsb-nav-title">Komponenty</div>
+                    <ul class="dsb-nav-list">
+                        <li class="dsb-nav-item">
+                            <a href="#buttons" class="dsb-nav-link">Przyciski</a>
+                            <a href="#buttons-primary" class="dsb-nav-sublink">Podstawowe</a>
+                            <a href="#buttons-secondary" class="dsb-nav-sublink">Wtórne</a>
+                            <a href="#buttons-cta" class="dsb-nav-sublink">CTA</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#section-headers" class="dsb-nav-link">Nagłówki sekcji</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#cards" class="dsb-nav-link">Karty</a>
+                            <a href="#cards-category" class="dsb-nav-sublink">Kategorie</a>
+                            <a href="#cards-usp" class="dsb-nav-sublink">USP</a>
+                            <a href="#cards-testimonials" class="dsb-nav-sublink">Testimoniale</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#process-steps" class="dsb-nav-link">Kroki procesu</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="dsb-nav-category">
+                    <div class="dsb-nav-title">Sekcje</div>
+                    <ul class="dsb-nav-list">
+                        <li class="dsb-nav-item">
+                            <a href="#sections-hero" class="dsb-nav-link">Hero</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#sections-categories" class="dsb-nav-link">Kategorie</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#sections-cta" class="dsb-nav-link">CTA</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="dsb-nav-category">
+                    <div class="dsb-nav-title">Wdrażanie</div>
+                    <ul class="dsb-nav-list">
+                        <li class="dsb-nav-item">
+                            <a href="#implementation" class="dsb-nav-link">Zasady wdrażania</a>
+                        </li>
+                        <li class="dsb-nav-item">
+                            <a href="#code-structure" class="dsb-nav-link">Struktura kodu</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="dsb-main">
+            <header class="dsb-header">
+                <button class="dsb-menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="dsb-header-right">
+                    <div class="dsb-version">v1.0 - 2025</div>
+                    <button class="dsb-theme-toggle" id="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <div class="dsb-content">
+                <!-- Overview Section -->
+                <section id="overview" class="dsb-section">
+                    <h1>Fixfactor Design System Bible</h1>
+                    <p>Witaj w interaktywnej dokumentacji Design System Bible dla marki Fixfactor. Ten dokument stanowi kompletny przewodnik po komponentach UI, zasadach projektowych i wytycznych implementacyjnych.</p>
+                    
+                    <div class="dsb-component mb-l">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Informacje o wersji</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <div style="width: 100%;">
+                                <p><strong>Nazwa:</strong> Fixfactor Design System</p>
+                                <p><strong>Wersja:</strong> 1.0 (Maj 2025)</p>
+                                <p><strong>Platforma:</strong> WordPress (Gutenberg) z możliwością migracji do innych technologii</p>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;div&gt;
+    &lt;p&gt;&lt;strong&gt;Nazwa:&lt;/strong&gt; Fixfactor Design System&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Wersja:&lt;/strong&gt; 1.0 (Maj 2025)&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Platforma:&lt;/strong&gt; WordPress (Gutenberg) z możliwością migracji do innych technologii&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>/* Podstawowe style dla sekcji informacyjnej */
+div {
+    width: 100%;
+}
+
+p {
+    margin-bottom: var(--space-s);
+}
+
+strong {
+    font-weight: 600;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-l); margin-top: var(--space-l);">
+                        <div class="fixfactor-process-step">
+                            <div class="fixfactor-step-number-container">
+                                <div class="fixfactor-step-number">1</div>
+                            </div>
+                            <h3 class="fixfactor-step-title">Rezerwacja lub wysyłka</h3>
+                            <p class="fixfactor-step-description">Zarezerwuj wizytę w jednej z naszych londyńskich lokalizacji lub wyślij urządzenie do nas.</p>
+                        </div>
+                        
+                        <div class="fixfactor-process-step">
+                            <div class="fixfactor-step-number-container">
+                                <div class="fixfactor-step-number">2</div>
+                            </div>
+                            <h3 class="fixfactor-step-title">Diagnoza</h3>
+                            <p class="fixfactor-step-description">Nasi eksperci dokładnie zdiagnozują problem i przedstawią jasną wycenę.</p>
+                        </div>
+                        
+                        <div class="fixfactor-process-step">
+                            <div class="fixfactor-step-number-container">
+                                <div class="fixfactor-step-number">3</div>
+                            </div>
+                            <h3 class="fixfactor-step-title">Naprawa</h3>
+                            <p class="fixfactor-step-description">Naprawiamy urządzenie używając wysokiej jakości części i specjalistycznego sprzętu.</p>
+                        </div>
+                        
+                        <div class="fixfactor-process-step">
+                            <div class="fixfactor-step-number-container">
+                                <div class="fixfactor-step-number">4</div>
+                            </div>
+                            <h3 class="fixfactor-step-title">Odbiór i gwarancja</h3>
+                            <p class="fixfactor-step-description">Odbierz naprawione urządzenie lub wyślemy je do Ciebie z 6-miesięczną gwarancją.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sections Examples -->
+                <section id="sections-hero" class="dsb-section">
+                    <h2 class="dsb-section-title">Sekcja Hero</h2>
+                    <p>Sekcja Hero jest kluczowym elementem pierwszego wrażenia, przedstawiającym najważniejsze komunikaty i zachęcającym do działania.</p>
+                    
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Struktura sekcji Hero</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;section class="fixfactor-section fixfactor-hero-section"&gt;
+    &lt;div class="fixfactor-floating-element float-1"&gt;&lt;/div&gt;
+    &lt;div class="fixfactor-floating-element float-2"&gt;&lt;/div&gt;
+    &lt;div class="fixfactor-floating-element float-3"&gt;&lt;/div&gt;
+    
+    &lt;div class="fixfactor-container"&gt;
+        &lt;!-- Mobile Image (pokazywany tylko na małych ekranach) --&gt;
+        &lt;div class="fixfactor-hero-mobile-image"&gt;
+            &lt;img src="hero-mobile.jpg" alt="Fixfactor Hero Image"&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="fixfactor-hero-content fadeInLeft"&gt;
+            &lt;h1&gt;Expert &lt;span class="text-gradient"&gt;Device Repair&lt;/span&gt; for London & Beyond&lt;/h1&gt;
+            &lt;p&gt;From cracked screens to motherboard repairs, we fix all phones, computers, and electronics with high-quality parts and a 6-month warranty.&lt;/p&gt;
+            &lt;a href="#" class="fixfactor-button"&gt;Start Your Repair&lt;/a&gt;
+            &lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Book Appointment&lt;/a&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="fixfactor-hero-image fadeInRight"&gt;
+            &lt;div class="fixfactor-blob-container"&gt;
+                &lt;div class="fixfactor-blob-shape"&gt;&lt;/div&gt;
+                &lt;div class="fixfactor-blob-shape-2"&gt;&lt;/div&gt;
+                &lt;img src="hero.jpg" alt="Fixfactor Hero Image" class="fixfactor-blob-img"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-hero-section {
+    padding: 8rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8fcfd 0%, #edf7fa 100%);
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    padding-bottom: 10rem;
+}
+
+.fixfactor-hero-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(rgba(0, 170, 196, 0.03) 2px, transparent 2px),
+        radial-gradient(rgba(255, 209, 0, 0.02) 1.5px, transparent 1.5px);
+    background-size: 30px 30px, 20px 20px;
+    background-position: 0 0, 15px 15px;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.fixfactor-hero-content {
+    max-width: 600px;
+    margin-right: auto;
+    position: relative;
+    z-index: 5;
+}
+
+.fixfactor-hero-section h1 {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.fixfactor-hero-section p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="sections-categories" class="dsb-section">
+                    <h2 class="dsb-section-title">Sekcja kategorii</h2>
+                    <p>Sekcja kategorii przedstawia główne obszary działalności lub usługi, pozwalając użytkownikowi szybko znaleźć interesujące go tematy.</p>
+                    
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Struktura sekcji kategorii</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;section id="repair-categories" class="fixfactor-section fixfactor-categories-section"&gt;
+    &lt;div class="fixfactor-categories-bg"&gt;&lt;/div&gt;
+    &lt;div class="fixfactor-container"&gt;
+        &lt;div class="fixfactor-section-header fadeInUp"&gt;
+            &lt;h2&gt;What Can We Fix For You?&lt;/h2&gt;
+            &lt;p&gt;We repair a wide range of devices with premium-quality parts and expert technicians&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="fixfactor-categories-grid"&gt;
+            &lt;!-- Phone --&gt;
+            &lt;a href="#" class="fixfactor-category-card"&gt;
+                &lt;div class="fixfactor-category-image-container"&gt;
+                    &lt;img src="phone-icon.png" alt="Phone Repair" class="fixfactor-category-image"&gt;
+                &lt;/div&gt;
+                &lt;h3 class="fixfactor-category-title"&gt;Phone&lt;/h3&gt;
+                &lt;p class="fixfactor-category-description"&gt;Screen replacements, battery issues, charging problems, and water damage repairs for all phone brands&lt;/p&gt;
+            &lt;/a&gt;
+            
+            &lt;!-- More category cards --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-categories-section {
+    padding: 0 0 5rem;
+    background-color: var(--background-alt);
+    position: relative;
+    overflow: hidden;
+    margin-top: -2px;
+    clip-path: polygon(0 0, 100% 6%, 100% 100%, 0% 100%);
+    padding-top: 8rem;
+}
+
+.fixfactor-categories-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 80% 20%, rgba(0, 170, 196, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 20% 80%, rgba(255, 209, 0, 0.08) 0%, transparent 25%),
+        linear-gradient(to right, rgba(0, 170, 196, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 170, 196, 0.03) 1px, transparent 1px);
+    background-size: auto, auto, 25px 25px, 25px 25px;
+    z-index: 1;
+}
+
+.fixfactor-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 2;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="sections-cta" class="dsb-section">
+                    <h2 class="dsb-section-title">Sekcja CTA</h2>
+                    <p>Sekcja CTA (Call to Action) to element, który ma za zadanie skłonić użytkownika do konkretnego działania, takiego jak kontakt czy zamówienie usługi.</p>
+                    
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Struktura sekcji CTA</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;section class="fixfactor-section fixfactor-cta-section"&gt;
+    &lt;div class="fixfactor-cta-bg"&gt;&lt;/div&gt;
+    &lt;div class="fixfactor-cta-pattern"&gt;&lt;/div&gt;
+    &lt;div class="fixfactor-cta-dots"&gt;&lt;/div&gt;
+    &lt;div class="fixfactor-container"&gt;
+        &lt;div class="fixfactor-cta-content"&gt;
+            &lt;h2 class="fadeInUp"&gt;Ready to Get Your Device Fixed?&lt;/h2&gt;
+            &lt;p class="fadeInUp"&gt;Whether you need a quick screen replacement or complex data recovery, our expert team is ready to help.&lt;/p&gt;
+            &lt;div class="fixfactor-cta-buttons"&gt;
+                &lt;a href="#" class="fixfactor-cta-button fadeInUp"&gt;Start Your Repair&lt;/a&gt;
+                &lt;a href="#" class="fixfactor-cta-button-alt fadeInUp"&gt;Contact Us&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-cta-section {
+    position: relative;
+    z-index: 5;
+    padding: 7rem 3rem;
+    margin: -3rem 5% 0;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18), 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: auto;
+}
+
+.fixfactor-cta-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a4350 0%, #062830 100%);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.fixfactor-cta-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(0, 170, 196, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 85% 75%, rgba(0, 170, 196, 0.12) 0%, transparent 25%),
+        radial-gradient(circle at 75% 25%, rgba(255, 209, 0, 0.08) 0%, transparent 15%),
+        radial-gradient(circle at 35% 65%, rgba(255, 209, 0, 0.05) 0%, transparent 10%);
+    z-index: 2;
+    border-radius: 20px;
+}
+
+.fixfactor-cta-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Implementation Guidelines -->
+                <section id="implementation" class="dsb-section">
+                    <h2 class="dsb-section-title">Zasady wdrażania</h2>
+                    <p>Poniższe zasady pomagają zachować spójność i jakość implementacji Design System w projektach Fixfactor.</p>
+                    
+                    <h3>1. Zachowanie spójności wizualnej</h3>
+                    <ul>
+                        <li>Używaj tylko zdefiniowanych kolorów, przestrzeni i typografii</li>
+                        <li>Zachowuj odpowiednie proporcje elementów</li>
+                        <li>Stosuj się do reguł interfejsu</li>
+                    </ul>
+                    
+                    <h3>2. Dostępność</h3>
+                    <ul>
+                        <li>Zachowuj odpowiedni kontrast (WCAG AA)</li>
+                        <li>Zapewniaj alternatywne opisy dla elementów wizualnych</li>
+                        <li>Dbaj o prawidłową hierarchię nagłówków</li>
+                    </ul>
+                    
+                    <h3>3. Wydajność</h3>
+                    <ul>
+                        <li>Optymalizuj obrazy</li>
+                        <li>Minimalizuj liczbę animacji na stronach mobilnych</li>
+                        <li>Stosuj lazy loading dla elementów poza widokiem</li>
+                    </ul>
+                    
+                    <h3>4. Wdrażanie w WordPress</h3>
+                    <ul>
+                        <li>Komponenty powinny być kopiowane do bloku HTML w Gutenbergu</li>
+                        <li>JavaScript powinien być umieszczony na końcu bloku HTML</li>
+                        <li>Do ładowania kodu można użyć wp_enqueue_scripts dla lepszej wydajności</li>
+                    </ul>
+                </section>
+                
+                <section id="code-structure" class="dsb-section">
+                    <h2 class="dsb-section-title">Struktura kodu</h2>
+                    <p>Właściwa struktura kodu zapewnia łatwość utrzymania i rozbudowy systemu w przyszłości.</p>
+                    
+                    <h3>Podstawowa struktura CSS</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Organizacja CSS</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="copy-code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code" style="display: block;">
+                            <pre><code>/* ====== ZMIENNE ====== */
+:root {
+    /* Kolory */
+    --fixfactor-primary: #00aac4;
+    --fixfactor-primary-dark: #008ca3;
+    /* itd. */
+    
+    /* Przestrzeń */
+    --space-xs: 0.5rem;
+    --space-s: 1rem;
+    /* itd. */
+    
+    /* Inne zmienne */
+    --border-radius: 9px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ====== RESET I PODSTAWY ====== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ====== KOMPONENTY ATOMOWE ====== */
+/* Przyciski */
+.fixfactor-button {
+    /* style przycisku */
+}
+
+/* ====== ZŁOŻONE KOMPONENTY ====== */
+/* Karty */
+.fixfactor-category-card {
+    /* style karty */
+}
+
+/* ====== SEKCJE ====== */
+/* Hero */
+.fixfactor-hero-section {
+    /* style sekcji hero */
+}
+
+/* ====== ANIMACJE ====== */
+@keyframes float {
+    /* definicja animacji */
+}
+
+/* ====== RESPONSYWNOŚĆ ====== */
+@media (max-width: 992px) {
+    /* style dla mniejszych ekranów */
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <h3>Podstawowa struktura HTML</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Organizacja HTML</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="copy-code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code" style="display: block;">
+                            <pre><code>&lt;!-- wp:html --&gt;
+&lt;!-- Stylesheets --&gt;
+&lt;style&gt;
+    /* Tutaj wklejamy CSS z odpowiednią strukturą */
+&lt;/style&gt;
+
+&lt;!-- Hero Section --&gt;
+&lt;section class="fixfactor-section fixfactor-hero-section"&gt;
+    &lt;!-- Zawartość sekcji --&gt;
+&lt;/section&gt;
+
+&lt;!-- Diagonal Divider --&gt;
+&lt;div class="fixfactor-diagonal-divider diagonal-white-to-light"&gt;&lt;/div&gt;
+
+&lt;!-- Categories Section --&gt;
+&lt;section class="fixfactor-section fixfactor-categories-section"&gt;
+    &lt;!-- Zawartość sekcji --&gt;
+&lt;/section&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicjalizacja JavaScript
+    });
+&lt;/script&gt;
+&lt;!-- /wp:html --&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="dsb-footer">
+                    <p>Fixfactor Design System Bible v1.0 &copy; 2025</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle mobile menu
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Navigation active state
+            const navLinks = document.querySelectorAll('.dsb-nav-link, .dsb-nav-sublink');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Remove active class from all links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // If sidebar is open on mobile, close it
+                    if (window.innerWidth <= 992) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+                
+                // Check if link href matches current hash
+                if (link.getAttribute('href') === window.location.hash) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Code toggle
+            const toggleButtons = document.querySelectorAll('[data-action="toggle-code"]');
+            
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const component = this.closest('.dsb-component');
+                    const codeBlock = component.querySelector('.dsb-component-code');
+                    
+                    if (codeBlock.style.display === 'block') {
+                        codeBlock.style.display = 'none';
+                    } else {
+                        codeBlock.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Code tabs
+            const codeTabs = document.querySelectorAll('.dsb-code-tab');
+            
+            codeTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabGroup = this.closest('.dsb-code-tabs');
+                    const panels = this.closest('.dsb-component-code').querySelectorAll('.dsb-code-panel');
+                    const tabTarget = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and panels
+                    tabGroup.querySelectorAll('.dsb-code-tab').forEach(tab => tab.classList.remove('active'));
+                    panels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding panel
+                    this.classList.add('active');
+                    document.querySelector(`.dsb-code-panel[data-panel="${tabTarget}"]`).classList.add('active');
+                });
+            });
+            
+            // Copy color button
+            const copyColorButtons = document.querySelectorAll('.dsb-copy-code');
+            
+            copyColorButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const colorValue = this.getAttribute('data-copy');
+                    navigator.clipboard.writeText(colorValue).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Skopiowano';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                        }, 2000);
+                    });
+                });
+            });
+            
+            // Copy code button
+            const copyCodeButtons = document.querySelectorAll('[data-action="copy-code"]');
+            
+            copyCodeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const component = this.closest('.dsb-component');
+                    const codeBlock = component.querySelector('pre code');
+                    
+                    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                        }, 2000);
+                    });
+                });
+            });
+            
+            // Theme toggle (placeholder for future dark mode)
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            themeToggle.addEventListener('click', function() {
+                // Toggle between sun and moon icons
+                if (this.innerHTML.includes('fa-sun')) {
+                    this.innerHTML = '<i class="fas fa-moon"></i>';
+                    // Here would go the code to switch to dark mode
+                } else {
+                    this.innerHTML = '<i class="fas fa-sun"></i>';
+                    // Here would go the code to switch to light mode
+                }
+            });
+            
+            // Smooth scroll for hash links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.dsb-header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL hash without scrolling
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+                
+                <!-- Philosophy Section -->
+                <section id="philosophy" class="dsb-section">
+                    <h2 class="dsb-section-title">Filozofia designu</h2>
+                    <p>Fixfactor Design System opiera się na następujących fundamentach, które określają naszą tożsamość wizualną i doświadczenie użytkownika:</p>
+                    
+                    <ol>
+                        <li><strong>Przejrzystość i funkcjonalność</strong> - każdy element ma jasne przeznaczenie i jest intuicyjny w użyciu</li>
+                        <li><strong>Profesjonalizm i zaufanie</strong> - design odzwierciedla ekspercki charakter firmy i buduje zaufanie</li>
+                        <li><strong>Bauhaus meets Apple</strong> - czystość formy z nowoczesnym szlifem</li>
+                        <li><strong>Elastyczność bez kompromisów</strong> - system działa na wszystkich urządzeniach bez utraty jakości</li>
+                        <li><strong>Ewolucja, nie rewolucja</strong> - system jest dostosowany do rozwoju zgodnie z potrzebami firmy</li>
+                    </ol>
+                </section>
+                
+                <!-- Colors Section -->
+                <section id="colors" class="dsb-section">
+                    <h2 class="dsb-section-title">Kolory</h2>
+                    <p>Paleta kolorów Fixfactor jest zaprojektowana, aby transmitować profesjonalizm, technologiczną pewność siebie i przyjazne nastawienie.</p>
+                    
+                    <h3>Kolory podstawowe</h3>
+                    <div class="dsb-colors">
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #00aac4;">
+                                <button class="dsb-copy-code" data-copy="#00aac4">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Primary</div>
+                                <div class="dsb-color-value">#00aac4</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #008ca3;">
+                                <button class="dsb-copy-code" data-copy="#008ca3">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Primary Dark</div>
+                                <div class="dsb-color-value">#008ca3</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: rgba(0, 170, 196, 0.1);">
+                                <button class="dsb-copy-code" data-copy="rgba(0, 170, 196, 0.1)">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Primary Light</div>
+                                <div class="dsb-color-value">rgba(0, 170, 196, 0.1)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #FFD100;">
+                                <button class="dsb-copy-code" data-copy="#FFD100">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Accent</div>
+                                <div class="dsb-color-value">#FFD100</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #E6BC00;">
+                                <button class="dsb-copy-code" data-copy="#E6BC00">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Accent Dark</div>
+                                <div class="dsb-color-value">#E6BC00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: rgba(255, 209, 0, 0.1);">
+                                <button class="dsb-copy-code" data-copy="rgba(255, 209, 0, 0.1)">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Accent Light</div>
+                                <div class="dsb-color-value">rgba(255, 209, 0, 0.1)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Kolory tekstu</h3>
+                    <div class="dsb-colors">
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #0a0a0a;">
+                                <button class="dsb-copy-code" data-copy="#0a0a0a">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Text Primary</div>
+                                <div class="dsb-color-value">#0a0a0a</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #121212;">
+                                <button class="dsb-copy-code" data-copy="#121212">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Text Secondary</div>
+                                <div class="dsb-color-value">#121212</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #7a7a7a;">
+                                <button class="dsb-copy-code" data-copy="#7a7a7a">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Text Light</div>
+                                <div class="dsb-color-value">#7a7a7a</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Kolory tła</h3>
+                    <div class="dsb-colors">
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #ffffff; border: 1px solid rgba(0, 0, 0, 0.05);">
+                                <button class="dsb-copy-code" data-copy="#ffffff">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Background</div>
+                                <div class="dsb-color-value">#ffffff</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #f7f9fc;">
+                                <button class="dsb-copy-code" data-copy="#f7f9fc">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">Background Alt</div>
+                                <div class="dsb-color-value">#f7f9fc</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dsb-color-card">
+                            <div class="dsb-color-preview" style="background-color: #0a1014;">
+                                <button class="dsb-copy-code" data-copy="#0a1014">
+                                    <i class="fas fa-copy"></i> Kopiuj
+                                </button>
+                            </div>
+                            <div class="dsb-color-info">
+                                <div class="dsb-color-name">CTA Background</div>
+                                <div class="dsb-color-value">#0a1014</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Implementacja CSS</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Zmienne CSS</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="copy-code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code" style="display: block;">
+                            <pre><code>:root {
+    --fixfactor-primary: #00aac4;
+    --fixfactor-primary-dark: #008ca3;
+    --fixfactor-primary-light: rgba(0, 170, 196, 0.1);
+    --fixfactor-accent: #FFD100;
+    --fixfactor-accent-dark: #E6BC00;
+    --fixfactor-accent-light: rgba(255, 209, 0, 0.1);
+    --text-primary: #0a0a0a;
+    --text-secondary: #121212;
+    --text-light: #7a7a7a;
+    --background: #ffffff;
+    --background-alt: #f7f9fc;
+    --cta-background: #0a1014;
+    --cta-gradient: linear-gradient(135deg, #0a1014 0%, #006d7e 120%);
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Typography Section -->
+                <section id="typography" class="dsb-section">
+                    <h2 class="dsb-section-title">Typografia</h2>
+                    <p>System typograficzny Fixfactor jest zaprojektowany, aby zapewnić czytelność i hierarchię informacji.</p>
+                    
+                    <h3>Font Stack</h3>
+                    <div class="dsb-component mb-l">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">System fontów</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="copy-code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code" style="display: block;">
+                            <pre><code>font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;</code></pre>
+                        </div>
+                    </div>
+                    
+                    <h3>Hierarchia typograficzna</h3>
+                    <div class="dsb-typography-sample">
+                        <div class="dsb-typography-title">
+                            <div class="dsb-typography-name">H1</div>
+                            <div class="dsb-typography-info">56px / 800 weight / line-height 1.2</div>
+                        </div>
+                        <h1 style="font-size: 56px; font-weight: 800; line-height: 1.2;">Nagłówek pierwszego poziomu</h1>
+                    </div>
+                    
+                    <div class="dsb-typography-sample">
+                        <div class="dsb-typography-title">
+                            <div class="dsb-typography-name">H2</div>
+                            <div class="dsb-typography-info">38px / 800 weight / line-height 1.2</div>
+                        </div>
+                        <h2 style="font-size: 38px; font-weight: 800; line-height: 1.2;">Nagłówek drugiego poziomu</h2>
+                    </div>
+                    
+                    <div class="dsb-typography-sample">
+                        <div class="dsb-typography-title">
+                            <div class="dsb-typography-name">H3</div>
+                            <div class="dsb-typography-info">24px / 700 weight / line-height 1.3</div>
+                        </div>
+                        <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3;">Nagłówek trzeciego poziomu</h3>
+                    </div>
+                    
+                    <div class="dsb-typography-sample">
+                        <div class="dsb-typography-title">
+                            <div class="dsb-typography-name">H4</div>
+                            <div class="dsb-typography-info">20px / 700 weight / line-height 1.3</div>
+                        </div>
+                        <h4 style="font-size: 20px; font-weight: 700; line-height: 1.3;">Nagłówek czwartego poziomu</h4>
+                    </div>
+                    
+                    <div class="dsb-typography-sample">
+                        <div class="dsb-typography-title">
+                            <div class="dsb-typography-name">Paragraf</div>
+                            <div class="dsb-typography-info">16px / 400 weight / line-height 1.6</div>
+                        </div>
+                        <p style="font-size: 16px; font-weight: 400; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc sit amet nunc. Nulla facilisi. Sed euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc.</p>
+                    </div>
+                    
+                    <div class="dsb-typography-sample">
+                        <div class="dsb-typography-title">
+                            <div class="dsb-typography-name">Small</div>
+                            <div class="dsb-typography-info">14px / 400 weight / line-height 1.5</div>
+                        </div>
+                        <p style="font-size: 14px; font-weight: 400; line-height: 1.5;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc sit amet nunc.</p>
+                    </div>
+                    
+                    <h3>Responsywność typografii</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: var(--space-l);">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Element</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Desktop</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Tablet</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Mobile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">H1</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">56px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">48px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">36px</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">H2</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">38px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">32px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">28px</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">H3</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">24px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">22px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">20px</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">H4</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">20px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">18px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">16px</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Paragraf</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">16px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">16px</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">15px</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs);">Small</td>
+                                <td style="padding: var(--space-xs);">14px</td>
+                                <td style="padding: var(--space-xs);">14px</td>
+                                <td style="padding: var(--space-xs);">13px</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Spacing Section -->
+                <section id="spacing" class="dsb-section">
+                    <h2 class="dsb-section-title">Przestrzeń</h2>
+                    <p>Fixfactor używa wielokrotności 0.5rem (8px) jako podstawowej jednostki przestrzeni, zapewniając spójność w całym systemie.</p>
+                    
+                    <h3>Jednostki przestrzeni</h3>
+                    <div class="dsb-ruler">
+                        <div class="dsb-ruler-labels">
+                            <div class="dsb-ruler-label">XS (8px)</div>
+                            <div class="dsb-ruler-label">S (16px)</div>
+                            <div class="dsb-ruler-label">M (24px)</div>
+                            <div class="dsb-ruler-label">L (32px)</div>
+                            <div class="dsb-ruler-label">XL (48px)</div>
+                            <div class="dsb-ruler-label">XXL (80px)</div>
+                        </div>
+                        <div class="dsb-ruler-bars">
+                            <div class="dsb-ruler-bar" style="height: 10px; width: 100px;"></div>
+                            <div class="dsb-ruler-bar" style="height: 20px; width: 100px;"></div>
+                            <div class="dsb-ruler-bar" style="height: 30px; width: 100px;"></div>
+                            <div class="dsb-ruler-bar" style="height: 40px; width: 100px;"></div>
+                            <div class="dsb-ruler-bar" style="height: 50px; width: 100px;"></div>
+                            <div class="dsb-ruler-bar" style="height: 50px; width: 100px;"></div>
+                        </div>
+                    </div>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: var(--space-l);">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Nazwa</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Wartość</th>
+                                <th style="text-align: left; padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">Zastosowanie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">XS</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">0.5rem (8px)</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Najmniejsze odstępy, padding dla małych elementów</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">S</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">1rem (16px)</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Standardowy padding wewnętrzny, małe marginesy</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">M</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">1.5rem (24px)</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Odstępy między elementami pokrewnymi</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">L</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">2rem (32px)</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Odstępy sekcyjne, większe marginesy</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">XL</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">3rem (48px)</td>
+                                <td style="padding: var(--space-xs); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">Duże odstępy między sekcjami</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--space-xs);">XXL</td>
+                                <td style="padding: var(--space-xs);">5rem (80px)</td>
+                                <td style="padding: var(--space-xs);">Bardzo duże odstępy (np. padding sekcji)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Implementacja CSS</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Zmienne przestrzeni</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="copy-code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code" style="display: block;">
+                            <pre><code>:root {
+    --space-xs: 0.5rem;   /* 8px */
+    --space-s: 1rem;      /* 16px */
+    --space-m: 1.5rem;    /* 24px */
+    --space-l: 2rem;      /* 32px */
+    --space-xl: 3rem;     /* 48px */
+    --space-xxl: 5rem;    /* 80px */
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Shadows Section -->
+                <section id="shadows" class="dsb-section">
+                    <h2 class="dsb-section-title">Cienie</h2>
+                    <p>System cieni Fixfactor zapewnia głębię i hierarchię elementów, podkreślając trójwymiarowość interfejsu.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-l); margin-bottom: var(--space-l);">
+                        <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: var(--card-shadow);">
+                            <h4>Card Shadow</h4>
+                            <p style="color: var(--text-light);">Używany dla standardowych kart</p>
+                            <code>0 10px 25px rgba(0, 0, 0, 0.05)</code>
+                        </div>
+                        
+                        <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: var(--card-hover-shadow);">
+                            <h4>Card Hover Shadow</h4>
+                            <p style="color: var(--text-light);">Używany dla kart po najechaniu</p>
+                            <code>0 15px 25px rgba(0, 0, 0, 0.1)</code>
+                        </div>
+                        
+                        <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: 0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);">
+                            <h4>Button Shadow</h4>
+                            <p style="color: var(--text-light);">Używany dla przycisków</p>
+                            <code>0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05)</code>
+                        </div>
+                        
+                        <div style="background-color: white; padding: var(--space-l); border-radius: var(--border-radius); box-shadow: 0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);">
+                            <h4>Button Hover Shadow</h4>
+                            <p style="color: var(--text-light);">Używany dla przycisków po najechaniu</p>
+                            <code>0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1)</code>
+                        </div>
+                    </div>
+                    
+                    <h3>Implementacja CSS</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Zmienne cieni</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="copy-code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code" style="display: block;">
+                            <pre><code>:root {
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    --button-shadow: 0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);
+    --button-hover-shadow: 0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);
+    --cta-shadow: 0 25px 50px rgba(0, 0, 0, 0.18), 0 10px 20px rgba(0, 0, 0, 0.1);
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Buttons Section -->
+                <section id="buttons" class="dsb-section">
+                    <h2 class="dsb-section-title">Przyciski</h2>
+                    <p>Przyciski są kluczowymi elementami interakcji, zaprojektowanymi, aby wyróżniać się i zachęcać do działania.</p>
+                    
+                    <h3 id="buttons-primary">Przyciski podstawowe</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Przycisk podstawowy</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <a href="#" class="fixfactor-button">Przycisk podstawowy</a>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;a href="#" class="fixfactor-button"&gt;Przycisk podstawowy&lt;/a&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-button {
+    display: inline-block;
+    background-color: var(--fixfactor-primary);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 1.1rem 2.2rem;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(0, 170, 196, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.fixfactor-button:hover {
+    background-color: var(--fixfactor-primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 25px rgba(0, 170, 196, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: white;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 id="buttons-secondary">Przyciski wtórne</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Przycisk wtórny</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <a href="#" class="fixfactor-button fixfactor-button-secondary">Przycisk wtórny</a>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Przycisk wtórny&lt;/a&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-button-secondary {
+    background-color: var(--fixfactor-accent);
+    color: var(--text-primary);
+    box-shadow: 0 10px 20px rgba(255, 209, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.fixfactor-button-secondary:hover {
+    background-color: var(--fixfactor-accent-dark);
+    box-shadow: 0 15px 25px rgba(255, 209, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Przyciski w grupie</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Grupa przycisków</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <div class="dsb-button-group">
+                                <a href="#" class="fixfactor-button">Przycisk podstawowy</a>
+                                <a href="#" class="fixfactor-button fixfactor-button-secondary">Przycisk wtórny</a>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;div class="dsb-button-group"&gt;
+    &lt;a href="#" class="fixfactor-button"&gt;Przycisk podstawowy&lt;/a&gt;
+    &lt;a href="#" class="fixfactor-button fixfactor-button-secondary"&gt;Przycisk wtórny&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.dsb-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 id="buttons-cta">Przyciski CTA</h3>
+                    <div class="dsb-component" style="margin-bottom: var(--space-xl);">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Przyciski CTA</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview" style="background-color: var(--cta-background); padding: var(--space-xl);">
+                            <div class="dsb-button-group">
+                                <a href="#" class="fixfactor-cta-button">Przycisk CTA</a>
+                                <a href="#" class="fixfactor-cta-button-alt">Przycisk alternatywny</a>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;a href="#" class="fixfactor-cta-button"&gt;Przycisk CTA&lt;/a&gt;
+&lt;a href="#" class="fixfactor-cta-button-alt"&gt;Przycisk alternatywny&lt;/a&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-cta-button {
+    display: inline-block;
+    background-color: white;
+    color: var(--fixfactor-primary);
+    border: none;
+    border-radius: 9px;
+    padding: 1.2rem 2.5rem;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.03em;
+}
+
+.fixfactor-cta-button:hover {
+    background-color: var(--fixfactor-accent);
+    color: var(--text-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 5px 10px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.fixfactor-cta-button-alt {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 9px;
+    padding: 1.2rem 2.5rem;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.03em;
+}
+
+.fixfactor-cta-button-alt:hover {
+    background-color: white;
+    color: var(--fixfactor-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25), 0 5px 10px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section Headers -->
+                <section id="section-headers" class="dsb-section">
+                    <h2 class="dsb-section-title">Nagłówki sekcji</h2>
+                    <p>Nagłówki sekcji zapewniają spójną strukturę informacji i wizualną identyfikację obszarów strony.</p>
+                    
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Nagłówek sekcji</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <div class="fixfactor-section-header">
+                                <h2>Tytuł sekcji</h2>
+                                <p>Opis sekcji z dodatkowymi informacjami wyjaśniającymi przeznaczenie i zawartość sekcji.</p>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;div class="fixfactor-section-header"&gt;
+    &lt;h2&gt;Tytuł sekcji&lt;/h2&gt;
+    &lt;p&gt;Opis sekcji z dodatkowymi informacjami wyjaśniającymi przeznaczenie i zawartość sekcji.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.fixfactor-section-header h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.fixfactor-section-header h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(to right, var(--fixfactor-primary), var(--fixfactor-accent));
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fixfactor-section-header p {
+    font-size: 18px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 1.8rem auto 0;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Cards Section -->
+                <section id="cards" class="dsb-section">
+                    <h2 class="dsb-section-title">Karty</h2>
+                    <p>Karty są elastycznymi kontenerami do prezentacji powiązanych informacji i interakcji.</p>
+                    
+                    <h3 id="cards-category">Karty kategorii</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Karta kategorii</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <div style="max-width: 300px; width: 100%;">
+                                <a href="#" class="fixfactor-category-card">
+                                    <div class="fixfactor-category-image-container">
+                                        <i class="fas fa-mobile-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
+                                    </div>
+                                    <h3 class="fixfactor-category-title">Naprawa telefonów</h3>
+                                    <p class="fixfactor-category-description">Wymiana ekranu, baterii, naprawa po zalaniu i inne usługi dla wszystkich marek telefonów.</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;a href="#" class="fixfactor-category-card"&gt;
+    &lt;div class="fixfactor-category-image-container"&gt;
+        &lt;i class="fas fa-mobile-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;h3 class="fixfactor-category-title"&gt;Naprawa telefonów&lt;/h3&gt;
+    &lt;p class="fixfactor-category-description"&gt;Wymiana ekranu, baterii, naprawa po zalaniu i inne usługi dla wszystkich marek telefonów.&lt;/p&gt;
+&lt;/a&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2.5rem 1.5rem;
+    border-radius: var(--border-radius);
+    background-color: white;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    height: 280px;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+}
+
+.fixfactor-category-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 170, 196, 0.08) 0%, rgba(255, 209, 0, 0.08) 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+}
+
+.fixfactor-category-card:hover:before {
+    opacity: 1;
+}
+
+.fixfactor-category-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.fixfactor-category-card:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(to bottom, var(--fixfactor-primary), var(--fixfactor-accent));
+    transition: height 0.3s ease;
+}
+
+.fixfactor-category-card:hover:after {
+    height: 100%;
+}
+
+.fixfactor-category-image-container {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 170, 196, 0.15) 0%, rgba(255, 209, 0, 0.15) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+.fixfactor-category-card:hover .fixfactor-category-image-container {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.fixfactor-category-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.fixfactor-category-description {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dsb-card-grid">
+                        <a href="#" class="fixfactor-category-card">
+                            <div class="fixfactor-category-image-container">
+                                <i class="fas fa-mobile-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
+                            </div>
+                            <h3 class="fixfactor-category-title">Naprawa telefonów</h3>
+                            <p class="fixfactor-category-description">Wymiana ekranu, baterii, naprawa po zalaniu i inne usługi dla wszystkich marek telefonów.</p>
+                        </a>
+                        
+                        <a href="#" class="fixfactor-category-card">
+                            <div class="fixfactor-category-image-container">
+                                <i class="fas fa-tablet-alt fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
+                            </div>
+                            <h3 class="fixfactor-category-title">Naprawa tabletów</h3>
+                            <p class="fixfactor-category-description">Naprawa iPadów, Microsoft Surface i innych tabletów z usługą w ten sam dzień.</p>
+                        </a>
+                        
+                        <a href="#" class="fixfactor-category-card">
+                            <div class="fixfactor-category-image-container">
+                                <i class="fas fa-laptop fixfactor-category-image" style="font-size: 32px; color: var(--fixfactor-primary);"></i>
+                            </div>
+                            <h3 class="fixfactor-category-title">Naprawa laptopów</h3>
+                            <p class="fixfactor-category-description">Naprawa ekranów, płyt głównych, wymiana baterii i naprawa po zalaniu.</p>
+                        </a>
+                    </div>
+                    
+                    <h3 id="cards-usp">Karty USP</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Karta USP</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <div style="max-width: 350px; width: 100%;">
+                                <div class="fixfactor-usp-card">
+                                    <div class="fixfactor-usp-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <h3 class="fixfactor-usp-title">Kompletne rozwiązania</h3>
+                                    <p class="fixfactor-usp-description">Naprawiamy praktycznie wszystko, co elektroniczne - jeśli części istnieją, a schematy są dostępne, naprawimy to.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;div class="fixfactor-usp-card"&gt;
+    &lt;div class="fixfactor-usp-icon"&gt;
+        &lt;i class="fas fa-tools"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;h3 class="fixfactor-usp-title"&gt;Kompletne rozwiązania&lt;/h3&gt;
+    &lt;p class="fixfactor-usp-description"&gt;Naprawiamy praktycznie wszystko, co elektroniczne - jeśli części istnieją, a schematy są dostępne, naprawimy to.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-usp-card {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    position: relative;
+    padding: 3rem 2rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow), 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    text-align: center;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+}
+
+.fixfactor-usp-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.fixfactor-usp-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--fixfactor-primary);
+}
+
+.fixfactor-usp-icon {
+    margin: 0 auto 2rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 170, 196, 0.15) 0%, rgba(0, 170, 196, 0.08) 100%);
+    color: var(--fixfactor-primary);
+    font-size: 32px;
+    transform: rotate(0deg);
+    transition: transform 0.5s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+}
+
+.fixfactor-usp-card:hover .fixfactor-usp-icon {
+    transform: rotate(10deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.fixfactor-usp-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.fixfactor-usp-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50px;
+    height: 3px;
+    background: var(--fixfactor-primary);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.fixfactor-usp-description {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-top: 1.5rem;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: var(--space-l);">
+                        <div class="fixfactor-usp-card" style="flex: 1; min-width: 300px;">
+                            <div class="fixfactor-usp-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="fixfactor-usp-title">Kompletne rozwiązania</h3>
+                            <p class="fixfactor-usp-description">Naprawiamy praktycznie wszystko, co elektroniczne - jeśli części istnieją, a schematy są dostępne, naprawimy to.</p>
+                        </div>
+                        
+                        <div class="fixfactor-usp-card" style="flex: 1; min-width: 300px;">
+                            <div class="fixfactor-usp-icon" style="background: linear-gradient(135deg, rgba(255, 209, 0, 0.15) 0%, rgba(255, 209, 0, 0.08) 100%); color: #e6bc00;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="fixfactor-usp-title" style="color: var(--text-primary);">Szybki serwis</h3>
+                            <p class="fixfactor-usp-description">Wiele napraw przeprowadzamy tego samego dnia, często gdy czekasz. Nawet złożone naprawy płyt głównych zajmują zazwyczaj 1-3 dni.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 id="cards-testimonials">Karty testimoniali</h3>
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Karta testimonial</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <div style="max-width: 400px; width: 100%;">
+                                <div class="fixfactor-testimonial-card">
+                                    <div class="fixfactor-testimonial-content">
+                                        <div class="fixfactor-testimonial-quote">"</div>
+                                        <p class="fixfactor-testimonial-text">Absolutnie niesamowita usługa. Mój MacBook miał złożony problem z płytą główną, który Apple uznał za nienaprawialny. Fixfactor naprawił go w 3 dni za ułamek kosztu wymiany. Niesamowita wiedza!</p>
+                                    </div>
+                                    <div class="fixfactor-testimonial-author">
+                                        <div class="fixfactor-testimonial-avatar">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="fixfactor-testimonial-info">
+                                            <h4 class="fixfactor-testimonial-name">Sarah T.</h4>
+                                            <p class="fixfactor-testimonial-device">Naprawa MacBook Pro</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;div class="fixfactor-testimonial-card"&gt;
+    &lt;div class="fixfactor-testimonial-content"&gt;
+        &lt;div class="fixfactor-testimonial-quote"&gt;"&lt;/div&gt;
+        &lt;p class="fixfactor-testimonial-text"&gt;Absolutnie niesamowita usługa. Mój MacBook miał złożony problem z płytą główną, który Apple uznał za nienaprawialny. Fixfactor naprawił go w 3 dni za ułamek kosztu wymiany. Niesamowita wiedza!&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="fixfactor-testimonial-author"&gt;
+        &lt;div class="fixfactor-testimonial-avatar"&gt;
+            &lt;i class="fas fa-user"&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class="fixfactor-testimonial-info"&gt;
+            &lt;h4 class="fixfactor-testimonial-name"&gt;Sarah T.&lt;/h4&gt;
+            &lt;p class="fixfactor-testimonial-device"&gt;Naprawa MacBook Pro&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-testimonial-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow), 0 3px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.fixfactor-testimonial-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.fixfactor-testimonial-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--fixfactor-primary), var(--fixfactor-accent));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.fixfactor-testimonial-card:hover:before {
+    opacity: 1;
+}
+
+.fixfactor-testimonial-content {
+    flex-grow: 1;
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.fixfactor-testimonial-quote {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    font-size: 130px;
+    color: rgba(0, 170, 196, 0.15);
+    font-family: Georgia, serif;
+    line-height: 1;
+    z-index: 1;
+}
+
+.fixfactor-testimonial-text {
+    position: relative;
+    z-index: 2;
+}
+
+.fixfactor-testimonial-author {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.fixfactor-testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background-color: rgba(0, 170, 196, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.fixfactor-testimonial-avatar i {
+    font-size: 28px;
+    color: var(--fixfactor-primary);
+}
+
+.fixfactor-testimonial-info {
+    flex-grow: 1;
+}
+
+.fixfactor-testimonial-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.fixfactor-testimonial-device {
+    font-size: 14px;
+    color: var(--fixfactor-primary);
+    font-weight: 600;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Process Steps Section -->
+                <section id="process-steps" class="dsb-section">
+                    <h2 class="dsb-section-title">Kroki procesu</h2>
+                    <p>Kroki procesu pomagają wizualizować kolejność działań i prowadzić użytkownika przez skomplikowane procedury.</p>
+                    
+                    <div class="dsb-component">
+                        <div class="dsb-component-header">
+                            <h3 class="dsb-component-title">Krok procesu</h3>
+                            <div class="dsb-component-controls">
+                                <button class="dsb-control-btn" data-action="toggle-code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="dsb-component-preview">
+                            <div style="max-width: 250px; width: 100%;">
+                                <div class="fixfactor-process-step">
+                                    <div class="fixfactor-step-number-container">
+                                        <div class="fixfactor-step-number">1</div>
+                                    </div>
+                                    <h3 class="fixfactor-step-title">Rezerwacja lub wysyłka</h3>
+                                    <p class="fixfactor-step-description">Zarezerwuj wizytę w jednej z naszych londyńskich lokalizacji lub wyślij urządzenie do nas z dowolnego miejsca w Wielkiej Brytanii.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dsb-component-code">
+                            <div class="dsb-code-tabs">
+                                <button class="dsb-code-tab active" data-tab="html">HTML</button>
+                                <button class="dsb-code-tab" data-tab="css">CSS</button>
+                            </div>
+                            <div class="dsb-code-panel active" data-panel="html">
+                                <pre><code>&lt;div class="fixfactor-process-step"&gt;
+    &lt;div class="fixfactor-step-number-container"&gt;
+        &lt;div class="fixfactor-step-number"&gt;1&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h3 class="fixfactor-step-title"&gt;Rezerwacja lub wysyłka&lt;/h3&gt;
+    &lt;p class="fixfactor-step-description"&gt;Zarezerwuj wizytę w jednej z naszych londyńskich lokalizacji lub wyślij urządzenie do nas z dowolnego miejsca w Wielkiej Brytanii.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                            <div class="dsb-code-panel" data-panel="css">
+                                <pre><code>.fixfactor-process-step {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 4;
+}
+
+.fixfactor-step-number-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.fixfactor-step-number {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    color: var(--fixfactor-primary);
+    border: 2px solid var(--fixfactor-primary);
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.fixfactor-process-step:hover .fixfactor-step-number {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 170, 196, 0.2);
+}
+
+.fixfactor-step-number:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border-radius: 50%;
+    border: 2px dashed var(--fixfactor-primary);
+    opacity: 0;
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+}
+
+.fixfactor-process-step:hover .fixfactor-step-number:before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fixfactor-step-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.fixfactor-step-description {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+}</code></pre>
+                            </div>
